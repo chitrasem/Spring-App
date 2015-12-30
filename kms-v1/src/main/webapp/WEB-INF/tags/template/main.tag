@@ -35,6 +35,10 @@
         <!-- sweet alerts -->
         <link href="<c:url value="/static/assets/sweet-alert/sweet-alert.min.css" />" rel="stylesheet">
 
+		<!--calendar css-->
+        <link href="<c:url value="/static/assets/fullcalendar/fullcalendar.css" />" rel="stylesheet" />
+        <link href="<c:url value="/static/assets/select2/select2.css" />" rel="stylesheet" type="text/css" />
+        
         <!-- Custom Files -->
         <link href="<c:url value="/static/css/helper.css" />" rel="stylesheet" type="text/css" />
         <link href="<c:url value="/static/css/style.css" />" rel="stylesheet" type="text/css" />
@@ -74,12 +78,12 @@
                                 </button>
                                 <span class="clearfix"></span>
                             </div>
-                            <form class="navbar-form pull-left" role="search">
+                            <!-- <form class="navbar-form pull-left" role="search">
                                 <div class="form-group">
-                                    <input type="text" class="form-control search-bar" placeholder="Type here for search...">
+                                    <input type="text" class="searchName" class="form-control search-bar" placeholder="Type here for search...">
                                 </div>
-                                <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
-                            </form>
+                                <button type="button" class="btnSearchName" class="btn btn-search"><i class="fa fa-search"></i></button>
+                            </form> -->
 
                             <ul class="nav navbar-nav navbar-right pull-right">
                                 <li class="dropdown hidden-xs">
@@ -188,22 +192,6 @@
                                 </ol>
                             </div>
                         </div>
-                         <!-- Searching*********************************************************************** -->
-			            	<div class="row">                        
-						      <div class="col-lg-12">
-						          <div class="panel panel-default">
-						              <div class="panel-body">
-						                  <div class="input-group">
-						                      <input type="text" id="searchName" name="example-input1-group2" class="form-control input-lg" placeholder="Search any name">
-						                      <span class="input-group-btn">
-						                          <button id="btnSearchName" type="button" class="btn-lg btn waves-effect waves-light btn-primary w-md"><i class="fa fa-search"></i></button>
-						                      </span>
-						                  </div>
-						              </div>
-						          </div>
-						      </div>
-						  
-						  </div>
                         <jsp:doBody />
                         
                         
@@ -358,6 +346,8 @@
         <script src="<c:url value="/static/assets/jquery-slimscroll/jquery.slimscroll.js" />"></script>
         <script src="<c:url value="/static/assets/jquery-blockui/jquery.blockUI.js" />"></script>
        	
+       	<script src="<c:url value="/static/js/jquery-ui-1.10.1.custom.min.js" />"></script>
+        <script src="<c:url value="/static/assets/select2/select2.min.js" />" type="text/javascript"></script>
        
 
 
@@ -367,7 +357,10 @@
         <!-- Data Table -->
         <script src="<c:url value="/static/assets/datatables/jquery.dataTables.min.js" />"></script>
         <script src="<c:url value="/static/assets/datatables/dataTables.bootstrap.js" />"></script>
-        
+        <!-- BEGIN PAGE SCRIPTS -->
+        <script src="<c:url value="/static/assets/fullcalendar/moment.min.js" />"></script>
+        <script src="<c:url value="/static/assets/fullcalendar/fullcalendar.min.js"/> "></script>
+        <script src="<c:url value="/static/assets/fullcalendar/fullcalendar.js" />"></script>
         
     </body>
 </html>

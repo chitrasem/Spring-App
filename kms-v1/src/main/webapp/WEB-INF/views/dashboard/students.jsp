@@ -8,27 +8,35 @@
               <div class="panel-body">
                   <div class="row">
                       <div class="col-md-12 col-sm-12 col-xs-12">
-                     	<div class="panel-body">
+                     	
                      		<fieldset>
                      			<legend>ជម្រើសនៃការស្វែងរក</legend>
-                     			<div class="panel-body">
-                     				<div class="row">     					
-                                        <div class="radio radio-info radio-inline">
-                                            <input type="radio" id="kmRadio" value="km" name="langRadio" checked>
-                                            <label for="kmRadio"> ភាសាខ្មែរ </label>
-                                        </div>
-                                        <div class="radio radio-info radio-inline">
-                                            <input type="radio" id="enRadio" value="en" name="langRadio">
-                                            <label for="enRadio"> English </label>
-                                        </div>
-                                        <div id="messageTyping">
-                                        
-                                        </div>
+                     				<div class="row"> 
+						                <div class="col-md-8">							                	                    				   		
+	                                        <div class="radio radio-info radio-inline">
+	                                            <input type="radio" id="kmRadio" value="km" name="langRadio" checked>
+	                                            <label for="kmRadio"> ភាសាខ្មែរ </label>
+	                                        </div>
+	                                        <div class="radio radio-info radio-inline">
+	                                            <input type="radio" id="enRadio" value="en" name="langRadio">
+	                                            <label for="enRadio"> English </label>
+	                                        </div>
+						                </div>
+                     				   <div class="col-md-8">                      				   		
+	                                        <div class="input-group">
+							                    <input type="text" id="searchName" name="example-input1-group2" class="form-control input-sm" placeholder="ស្វែងរកតាមរយៈឈ្មោះ...">
+							                    <span class="input-group-btn">
+							                        <button id="btnSearchName" type="button" class="btn-sm btn waves-effect waves-light btn-primary w-md"><i class="fa fa-search"></i></button>
+							                    </span>
+							                </div>
+                     				   </div>
+                     				   <div class="alert alert-info">
+                     				   	<p id="messageTyping"></p>                     				   	
+                     				   <br/><br/>
+									   </div>
                      				</div>
-                     			
-                     			</div>
                      		</fieldset>
-                     	</div>
+                     	
                           <table class="table table-hover table-striped table-bordered" id="tb_student">
                               <thead>
                               </thead>
@@ -39,19 +47,6 @@
                               
                           </table>
                           	<nav id="pagination">
-							  <ul class="pagination">
-							    <li class="disabled">
-							      <a href="javascript:" aria-label="Previous">
-							        <span aria-hidden="true">&laquo;</span>
-							      </a>
-							    </li>
-							    <li class="active"><a href="javascript:">1</a></li>
-							    <li class="disabled">
-							      <a href="javascript:" aria-label="Next">
-							        <span aria-hidden="true">&raquo;</span>
-							      </a>
-							    </li>
-							  </ul>
 							</nav>
                       </div>
                   </div>

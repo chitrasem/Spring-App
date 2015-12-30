@@ -19,14 +19,20 @@ $(document).ready(function(){
 	$("input:radio[name='langRadio']").change(function(){
 		if($(this).val()=="km"){
 			myData['lang'] = "km";
+			myData['pageCount'] = 1;
+			sendMessage.clearMessage("#messageTyping");
 			student.list_all_students();
 		}else{
+			myData['pageCount'] = 1;
 			myData['lang'] = "en";
+			sendMessage.clearMessage("#messageTyping");
+			
 			student.list_all_students();
 		}
 	});
 	$("#btnSearchName").click(function(){
 		var inputSearchName = $("#searchName").val();
+		myData['pageCount'] = 1;
 		myData['searchName'] = "%"+inputSearchName+"%";		
 		student.list_all_students();
 		
@@ -39,7 +45,7 @@ $(document).ready(function(){
 		clearTimeout(typingTimer);
 	    if ($('#searchName').val) {
 	        typingTimer = setTimeout(function () {
-	        	sendMessage.messageAlert("#messageTyping", "កំពុងតែស្វែងរកសូមមេត្តារង់ចាំ...");
+	        	sendMessage.messageAlert("#messageTyping", "កំពុងតែស្វែងរក...");
 	        }, doneTypingInterval);
 	    }
 	});
@@ -47,9 +53,10 @@ $(document).ready(function(){
 		 clearTimeout(typingTimer);
 		    typingTimer = setTimeout(function () {
 		    	var inputSearchName = $("#searchName").val();
-		    	searchName = "%"+$('#searchName').val()+"%";
-				student.list_all_students();
+		    	 myData['searchName'] = "%"+$('#searchName').val()+"%";
 				sendMessage.clearMessage("#messageTyping");
+				myData['pageCount'] = 1;
+				student.list_all_students();
 		        
 		    }, finaldoneTypingInterval);
 	});
@@ -68,10 +75,10 @@ var student ={
 				beforeSend: function(){
 				},
 				success: function(response){
+					console.log(response);
 					if(response["List"].length == 0){
 						sendMessage.messageAlert("#messageTyping", "ពុំមានទិន្នន័យដែលលោកអ្នកចង់ស្វែងរកទេ!");
-					}
-					//myData.numberOfRecord = response["List"].length;
+					}					
 					totalRecord = response['RecordTotal'];
 					createTable.allUser(response);
 					
@@ -129,34 +136,64 @@ var student ={
 var paging = {
 		createPagination : function(totalRecord)
 		{
-			var currentPage = myData.pageCount;
-			var a = totalRecord % myData.numberOfRecord;
-			var numberOfPaging = Math.floor(totalRecord / myData.numberOfRecord);
-			if(a>0){			
-				numberOfPaging += 1;			
-			}
-			var paging = "<ul class='pagination'>"+
-							"<li class='disabled'><a href='javascript:' aria-label='Previous'>" +
-								"<span aria-hidden='true'>&laquo;</span></a></li>";
+			if(totalRecord==0){
+				$("#pagination").html("");
+			}else{
+				var a = totalRecord % myData.numberOfRecord; // 5				
+				var numberOfPaging = Math.floor(totalRecord / myData.numberOfRecord);
 			
-			for(i=1;i<(numberOfPaging+1);i++){
-				if(i == currentPage) {
-					paging += "<li class='active'><a class='numberOfPage' href='javascript:'>"+i+"</a></li>";
-					continue;
+				if(a>0){			
+					numberOfPaging += 1;			
 				}
-
-				paging += "<li><a class='numberOfPage' href='javascript:'>"+i+"</a></li>";			
-			}
-			paging +='<li><a href="javascript:" aria-label="Next"><span aria-hidden="true">&laquo;</span></a></li>';
-			paging += "</u>";			
-			$("#pagination").html(paging);
-
-			$("#pagination li a.numberOfPage").on("click", function(){
-				var currentPage = $(this).text();
-				myData['pageCount'] = currentPage;
-				student.list_all_students();
+				var paging = "<ul class='pagination'>"+
+								"<li class='pagePrevious disabled'><a href='javascript:' aria-label='Previous'>" +
+									"<span aria-hidden='true'>&laquo;</span></a></li>";
 				
-			});
+				for(var i=1; i<(numberOfPaging+1);i++){
+					if(i == myData.pageCount) {
+						paging += "<li class='active'><a class='numberOfPage' href='javascript:'>"+i+"</a></li>";
+						continue;
+					}
+					paging += "<li><a class='numberOfPage' href='javascript:'>"+i+"</a></li>";			
+				}
+				paging +='<li class="pageNext disabled"><a href="javascript:" aria-label="Next"><span aria-hidden="true">&laquo;</span></a></li>';
+				paging += "</u>";			
+				$("#pagination").html(paging);
+				
+				if(myData['pageCount'] == 1){
+					$("ul.pagination li.pagePrevious").addClass("disabled");
+				}else{
+					$("ul.pagination li.pagePrevious").removeClass("disabled");
+				}
+				if(myData['pageCount'] == numberOfPaging){
+					$("ul.pagination li.pageNext").addClass("disabled");
+				}else{
+					$("ul.pagination li.pageNext").removeClass("disabled");
+				}		
+				
+
+				$("#pagination li a.numberOfPage").on("click", function(){ 
+						myData['pageCount'] = Number($(this).text());
+						student.list_all_students();
+				});
+				$("ul.pagination li.pagePrevious").on("click", function(){
+					if(myData['pageCount'] == 1){
+						return false;
+					}else{
+						myData['pageCount'] -= 1;
+						student.list_all_students();
+					}
+				});
+				$("ul.pagination li.pageNext").on("click", function(){
+					if(numberOfPaging == myData['pageCount']){
+						return false;
+					}else{
+						myData['pageCount'] += 1;
+						student.list_all_students();
+					}
+				});
+			}
+			
 		},
 }
 var createTable = {
@@ -216,12 +253,11 @@ var createTable = {
 		
 };
 var sendMessage = {
-		messageAlert: function(target,message){
-			var myAlert = '<div class="alert alert-info">'+message+'</div>';			
-			$(target).html(myAlert);
+		messageAlert: function(target,message){		
+			$(target).text(message);
 			
 		},
 		clearMessage: function(target){
-			$(target).html(" ");
+			$(target).text("");
 		}
 }

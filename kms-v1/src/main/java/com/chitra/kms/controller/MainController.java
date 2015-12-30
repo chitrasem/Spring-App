@@ -45,6 +45,12 @@ public class MainController {
 	 */
 	SSOIdUtil sSOIdUtil = new SSOIdUtil();
 	
+	@RequestMapping(value="/dashboard/event")
+	public String showAllEvent(){		
+		return "/dashboard/event";
+		
+	}
+	
 	/**
 	 * 
 	 * @param m

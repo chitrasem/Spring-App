@@ -26,10 +26,10 @@ public class StudentDaoImpl extends AbstractDao<Integer, Student> implements Stu
 		Criteria query = getSession().
 				createCriteria(Student.class, "student");
 				query.setProjection(Projections.projectionList().
-						add(Projections.property("student.id")).
-				add(Projections.property(lastName)).
-				add(Projections.property(firstName)).
-				add(Projections.property("student.gender")));
+						add(Projections.property("student.id"),"id").
+						add(Projections.property(lastName),"lastName").
+						add(Projections.property(firstName), "firstName").
+						add(Projections.property("student.gender"), "gender"));
 				
 				
 		Criterion cFirstName = Restrictions.like(firstName, searchName);

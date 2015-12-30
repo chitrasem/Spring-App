@@ -2,6 +2,23 @@
 	<!-- ============================================================== -->
 	<!-- Start right Content here -->
 
+<!-- Searching*********************************************************************** -->
+	       	<div class="row">                        
+	    <div class="col-lg-12">
+	        <div class="panel panel-default">
+	            <div class="panel-body">
+	                <div class="input-group">
+	                    <input type="text" id="searchName" name="example-input1-group2" class="form-control input-lg" placeholder="Search any name">
+	                    <span class="input-group-btn">
+	                        <button id="btnSearchName" type="button" class="btn-lg btn waves-effect waves-light btn-primary w-md"><i class="fa fa-search"></i></button>
+	                    </span>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	
+	</div>
+
 
   <div class="row">
       <div class="col-sm-6 col-lg-4">

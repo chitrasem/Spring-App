@@ -52,7 +52,13 @@
                             <li>
                                 <a href="<c:url value="/dashboard/students"/>" class="waves-effect"><i class="md md-people"></i><span> My Students </span></a>
                             </li>
-                            </sec:authorize> 
+                            </sec:authorize>                             
+                            <li>
+                                <a href="<c:url value="/dashboard/payment"/>" class="waves-effect"><i class="md  md-attach-money"></i><span> Payment </span></a>
+                            </li>                         
+                            <li>
+                                <a href="<c:url value="/dashboard/event"/>" class="waves-effect"><i class="md md-event"></i><span> Event </span></a>
+                            </li>
                                                       
                             <li class="has_sub">
                                 <a href="#" class="waves-effect"><i class="md md-mail"></i><span> Mail </span><span class="pull-right"><i class="md md-add"></i></span></a>
