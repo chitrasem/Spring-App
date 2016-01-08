@@ -46,8 +46,32 @@ public class MainController {
 	SSOIdUtil sSOIdUtil = new SSOIdUtil();
 	
 	@RequestMapping(value="/dashboard/event")
-	public String showAllEvent(){		
+	public String showAllEvent(Model m){			
+		User user =  userService.findBySso(sSOIdUtil.getPrincipal());
+		m.addAttribute("user", user);
 		return "/dashboard/event";
+		
+	}
+	@RequestMapping(value="/dashboard/payment")
+	public String paymentPage(Model m){			
+		User user =  userService.findBySso(sSOIdUtil.getPrincipal());
+		m.addAttribute("user", user);
+		return "/dashboard/payment";
+		
+	}
+	@RequestMapping(value="/dashboard/classroom")
+	public String classroomPage(Model m){			
+		User user =  userService.findBySso(sSOIdUtil.getPrincipal());
+		m.addAttribute("user", user);
+		
+		return "/dashboard/classRoom";
+		
+	}
+	@RequestMapping(value="/test/modal")
+	public String testModalPage(Model m){			
+		User user =  userService.findBySso(sSOIdUtil.getPrincipal());
+		m.addAttribute("user", user);
+		return "/dashboard/testModal";
 		
 	}
 	
@@ -58,12 +82,11 @@ public class MainController {
 	 */
 	@RequestMapping(value="/dashboard")
 	public String showDashboard(Model m){
-		m.addAttribute("user", getUser());
+		m.addAttribute("user", getUser());		
 		
-		
-		return "/dashboard/index";
-		
+		return "/dashboard/index";		
 	}
+	
 	@RequestMapping(value="/dashboard/contact", method = RequestMethod.GET)
 	public String showContactList(Model m){			
 		User user =  userService.findBySso(sSOIdUtil.getPrincipal());

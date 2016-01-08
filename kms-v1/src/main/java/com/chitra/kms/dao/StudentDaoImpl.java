@@ -5,7 +5,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.LogicalExpression;
-import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Order;import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -23,27 +23,34 @@ public class StudentDaoImpl extends AbstractDao<Integer, Student> implements Stu
 			int maxResults, 
 			int firstResult) {
 		
-		Criteria query = getSession().
+		Criteria crit = getSession().
 				createCriteria(Student.class, "student");
-				query.setProjection(Projections.projectionList().
+	/*	crit.setProjection(Projections.projectionList()
+				.add(Projections.alias(Projections.property("student.id"), "id"))
+				.add(Projections.alias(Projections.property(lastName),"lastName"))
+				.add(Projections.alias(Projections.property(firstName), "firstName"))
+				.add(Projections.alias(Projections.property("student.gender"), "gender")));*/
+				
+				crit.setProjection(Projections.projectionList().
 						add(Projections.property("student.id"),"id").
 						add(Projections.property(lastName),"lastName").
 						add(Projections.property(firstName), "firstName").
 						add(Projections.property("student.gender"), "gender"));
+		
 				
 				
 		Criterion cFirstName = Restrictions.like(firstName, searchName);
 		Criterion cLastName = Restrictions.like(lastName, searchName);
 		LogicalExpression orExp = Restrictions.or(cFirstName, cLastName);
-				query.add(orExp);
+				crit.add(orExp);
 				
-				query.add(Restrictions.eq("student.user.id", userId));
-				query.addOrder(Order.asc(lastName));
-				query.setMaxResults(maxResults);
-				query.setFirstResult(firstResult);
+				crit.add(Restrictions.eq("student.user.id", userId));
+				crit.addOrder(Order.asc(lastName));
+				crit.setMaxResults(maxResults);
+				crit.setFirstResult(firstResult);
 				
 		
-		return (List<Student>)query.list();
+		return (List<Student>)crit.list();
 		
 		
 	}

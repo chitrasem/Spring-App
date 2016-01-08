@@ -30,8 +30,8 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
 
 	@SuppressWarnings("unchecked")
 	public List<User> findAllUsers() {
-		//Criteria crit = createEntityCriteria();
-		Criteria crit = getSession().createCriteria(User.class);
+		Criteria crit = createEntityCriteria();
+		 //Criteria crit = getSession().createCriteria(User.class);
 		
 		return (List<User>) crit.list();
 	}

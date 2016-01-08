@@ -11,4 +11,9 @@ public class IndexController {
 	public ModelAndView showHome(){		
 		return new ModelAndView("redirect:home");		
 	}
+	
+	@RequestMapping(value="/uploading")
+	public String uploadingFile(){
+		return "/upload";
+	}
 }

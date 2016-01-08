@@ -58,6 +58,9 @@
                             </li>                         
                             <li>
                                 <a href="<c:url value="/dashboard/event"/>" class="waves-effect"><i class="md md-event"></i><span> Event </span></a>
+                            </li>                        
+                            <li>
+                                <a href="<c:url value="/dashboard/classroom"/>" class="waves-effect"><i class="md md-event"></i><span> Classroom </span></a>
                             </li>
                                                       
                             <li class="has_sub">

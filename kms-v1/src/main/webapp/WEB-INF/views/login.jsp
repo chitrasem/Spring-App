@@ -214,10 +214,12 @@
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="Username" />
+															<input id="inputUserName" type="text" class="form-control" placeholder="Username" />
 															<i class="ace-icon fa fa-user"></i>
 														</span>
+														<label id="lblUserName"></label>
 													</label>
+													
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
@@ -249,7 +251,7 @@
 															<span class="bigger-110">Reset</span>
 														</button>
 
-														<button type="button" class="width-65 pull-right btn btn-sm btn-success">
+														<button id="btnRegister" type="button" class="width-65 pull-right btn btn-sm btn-success">
 															<span class="bigger-110">Register</span>
 
 															<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
@@ -352,6 +354,8 @@
 			 });
 			 
 			});
+			
 		</script>
+		<script type="text/javascript" src="<c:url value="/static/kms/js/login.js" />"></script>
 	</body>
 </html>
