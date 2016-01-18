@@ -37,6 +37,10 @@ $(document).ready(function(){
 		student.list_all_students();
 		
 	});
+	$("#add_student").click(function(){
+		student.add_student();
+	});
+	
 	var typingTimer;
 	var doneTypingInterval = 10;
 	var finaldoneTypingInterval = 500;
@@ -81,6 +85,7 @@ var student ={
 				success: function(resp){
 					console.log(resp);
 					alert("Su");
+					student.list_all_students();
 				}
 				
 			});
