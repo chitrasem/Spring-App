@@ -66,7 +66,25 @@ $(document).ready(function(){
 	
 });
 
+var student_info = {
+		'firstName':'Chitra',
+		'lastName':'Sem',
+		'gender': 'M'
+};
+
 var student ={
+		add_student: function(){
+			$.ajax({
+				type: 'POST',
+				data: JSON.Stringify(student_info),
+				url: '../dashboard/student/add',
+				success: function(resp){
+					console.log(resp);
+					alert("Su");
+				}
+				
+			});
+		},
 		list_all_students: function(){
 			$.ajax({
 				type: "GET",
