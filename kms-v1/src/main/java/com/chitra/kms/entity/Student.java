@@ -40,7 +40,7 @@ public class Student {
     private String kmLastName;
     
     @DateTimeFormat(pattern="dd/MM/yyyy") 
-    @Column(name = "BIRTHDATE", nullable = false)
+    @Column(name = "BIRTHDATE")
     @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     private LocalDate dateOfBirth;
     
