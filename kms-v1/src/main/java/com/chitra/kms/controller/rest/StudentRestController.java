@@ -32,9 +32,12 @@ public class StudentRestController {
 	SSOIdUtil sSOIdUtil;
 	
 	
+	@RequestMapping(value="/student/add", method = RequestMethod.POST)
 	public Map<String, Object> addStudent(Map<String, Object> map,
-			@RequestBody Student student){
-		System.out.println(student.getFirstName());
+			@RequestParam("firstName") String firstName,
+			@RequestParam("lastName") String lastName,
+			@RequestParam("gender") String gender){
+		System.out.println(firstName);
 		
 		map.put("MESSAGE", "SUCCESS");
 		

@@ -79,6 +79,9 @@ var student_info = {
 var student ={
 		add_student: function(){
 			$.ajax({
+				headers:{
+					"Content-Type":"application/json" 
+				},
 				type: 'POST',
 				data: JSON.stringify(student_info),
 				url: '../dashboard/student/add',
