@@ -8,6 +8,12 @@
               <div class="panel-body">
                   <div class="row">
                       <div class="col-md-12 col-sm-12 col-xs-12">
+                      
+                      <div class="pull-right btn-group-sm">
+                          <a href="javascript:" id="add_student" class="btn btn-success waves-effect waves-light tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit">
+                              <i class="fa fa-pencil"></i>
+                          </a>
+                      </div>
                      	
                      		<fieldset>
                      			<legend>ជម្រើសនៃការស្វែងរក</legend>
