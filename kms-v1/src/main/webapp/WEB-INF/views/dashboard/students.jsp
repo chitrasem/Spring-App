@@ -7,13 +7,20 @@
               </div>
               <div class="panel-body">
                   <div class="row">
+                  
+                 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+					  <div class="modal-dialog modal-lg">
+					    <div class="modal-content">
+					      ...
+					    </div>
+					  </div>
+					</div>
+                  
                       <div class="col-md-12 col-sm-12 col-xs-12">
                       
-                      <div class="pull-right btn-group-sm">
-                          <a href="javascript:" id="add_student" class="btn btn-success waves-effect waves-light tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit">
-                              <i class="fa fa-pencil"></i>
-                          </a>
-                      </div>
+	                      <div class="pull-right btn-group-sm">
+	                          <button type="button" id="add_student" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Add Student</button>
+	                      </div>
                      	
                      		<fieldset>
                      			<legend>ជម្រើសនៃការស្វែងរក</legend>
