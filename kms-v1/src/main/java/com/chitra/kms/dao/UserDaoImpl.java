@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.AliasToBeanResultTransformer;
 import org.springframework.stereotype.Repository;
 
 import com.chitra.kms.entity.User;
@@ -29,9 +31,21 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<User> findAllUsers() {
-		Criteria crit = createEntityCriteria();
-		 //Criteria crit = getSession().createCriteria(User.class);
+	public List<User> findAllUsers(Boolean areTeachers) {
+		//Criteria crit = createEntityCriteria();
+		 Criteria crit = getSession().createCriteria(User.class, "u")
+				 .setProjection(Projections.projectionList()
+						 .add(Projections.property("u.firstName"),"firstName")
+						 .add(Projections.property("u.ssoId"),"ssoId")
+						 .add(Projections.property("lastName"),"lastName")								 
+						 );
+
+		 crit.createAlias("userProfiles", "profile");
+		 if(areTeachers==true){
+			 
+			 crit.add(Restrictions.eq("profile.type", "TEACHER"));
+		 }
+		 crit.setResultTransformer(new AliasToBeanResultTransformer(User.class));
 		
 		return (List<User>) crit.list();
 	}

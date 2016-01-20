@@ -365,10 +365,6 @@
         <script src="<c:url value="/static/assets/fullcalendar/fullcalendar.js" />"></script>
         
         <script type="text/javascript">
-        // Select2
-        jQuery(".select2").select2({
-            width: '40%'
-        });
         </script>
         
     </body>

@@ -35,8 +35,8 @@ public class UserServiceImpl implements UserService{
 		
 	}
 
-	public List<User> findAllUsers() {
-		return dao.findAllUsers();
+	public List<User> findAllUsers(Boolean areTeachers) {
+		return dao.findAllUsers(areTeachers);
 	}
 
 	public void deleteUserById(int id) {

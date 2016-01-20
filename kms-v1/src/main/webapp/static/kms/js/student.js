@@ -14,6 +14,8 @@ var myData = {"numberOfRecord":5,
 
 $(document).ready(function(){	
 	// list all 
+	user.list_teacher(false);
+	
 	student.list_all_students();
 	
 	$("input:radio[name='langRadio']").change(function(){
@@ -75,7 +77,21 @@ var student_info = {
 		'lastName':'Sem',
 		'gender': 'M'
 };
-
+var user = {
+	list_teacher: function(areTeachers){
+		var data = {"areTeacher": areTeachers};
+		$.ajax({
+			type: "GET",
+			data: JSON.stringify(data),
+			url: '../action/service/user/all',
+			success: function(resp){
+				if(resp["SUCCESS"]==true){
+					createSelectUser.users(resp);
+				}
+			}
+		});
+	}	
+};
 var student ={
 		add_student: function(){
 			$.ajax({
@@ -278,4 +294,24 @@ var sendMessage = {
 		clearMessage: function(target){
 			$(target).text("");
 		}
+}
+var createSelectUser = {
+		users: function(data){
+			var userData = data['List'];
+			var selectionOption = '<select class="select2">'
+				+'<option value="all">All</option>';
+			for(var i= 0; i< userData.length; i++){
+				selectionOption += '<option value="'+userData[i].ssoId+'">'+
+				userData[i].firstName+
+				userData[i].lastName+
+				'</option>';
+			}				
+			
+			$("#selectionUser").html(selectionOption);
+	        // Select2
+	        jQuery(".select2").select2({
+	            width: '40%'
+	        });
+		}
+		
 }

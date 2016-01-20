@@ -23,12 +23,12 @@ public class UserRestController {
 	private UserService service;
 	
 	@RequestMapping(value="/user/all")
-	public Map<String, Object> getAllUser(){
+	public Map<String, Object> getAllUser(@RequestParam("areTeachers") Boolean areTeachers){
 		Map<String, Object> map = new HashMap<String, Object>();
 		try{
-			List<User> users = (List<User>)service.findAllUsers();
+			List<User> users = (List<User>)service.findAllUsers(areTeachers);
 			map.put("SUCCESS", true);
-			map.put("MESSAGE", users);
+			map.put("List", users);
 		}catch(Exception e){
 			map.put("SUCCESS", false);
 			map.put("ERROR", e.getMessage());

@@ -35,12 +35,8 @@
                      				<div class="row"> 
 						                	<div class="form-group">
 						                		<label class="col-sm-3 control-label">Filter by teacher:</label>
-						                		<div class="col-sm9">
-						                			<select class="select2" data-placeholder="Choose a Country...">
-							                			<option value="all">All</option>
-							                			<option value="chitra">Chitra</option>
-							                			<option value="sem">Sem</option>						                		
-							                		</select>
+						                		<div class="col-sm9" id="selectionUser">
+						                			
 						                		</div>
 						                	</div>	
 						                <div class="col-md-8">						                	                    				   		
