@@ -1,6 +1,16 @@
 <template:basic htmlTitle="My Students" bodyTitle="My Students">
+	<!-- Modal -->
+	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+	  <div class="modal-dialog modal-lg">
+	    <div class="modal-content">
+	      ...
+	    </div>
+	  </div>
+	</div>
+	<!-- End Modal -->
+
 	<div class="row font-km">
-      <div class="col-md-6">
+      <div class="col-md-12">
           <div class="panel panel-default">
               <div class="panel-heading">
                   <h3 class="panel-title">បញ្ចីរាយនាមសិស្ស</h3>
@@ -8,20 +18,13 @@
               <div class="panel-body">
                   <div class="row">
                   
-                 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-					  <div class="modal-dialog modal-lg">
-					    <div class="modal-content">
-					      ...
-					    </div>
-					  </div>
-					</div>
+                 	<!-- Open Modal -->
+					<div class="pull-right btn-group-sm">
+	                          <button type="button" id="add_student" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Add Student</button>
+	                </div>
+	                <!-- ******************************************************* -->
                   
                       <div class="col-md-12 col-sm-12 col-xs-12">
-                      
-	                      <div class="pull-right btn-group-sm">
-	                          <button type="button" id="add_student" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Add Student</button>
-	                      </div>
-                     	
                      		<fieldset>
                      			<legend>ជម្រើសនៃការស្វែងរក</legend>
                      				<div class="row"> 

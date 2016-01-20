@@ -32,20 +32,20 @@ public class User {
     @Column(name="PASSWORD", nullable=false)
     private String password;
          
-    @NotEmpty
-    @Column(name="FIRST_NAME", nullable=false)
+   
+    @Column(name="FIRST_NAME")
     private String firstName;
  
-    @NotEmpty
-    @Column(name="LAST_NAME", nullable=false)
+   
+    @Column(name="LAST_NAME")
     private String lastName;
  
     @NotEmpty
     @Column(name="EMAIL", nullable=false)
     private String email;
  
-    @NotEmpty
-    @Column(name="STATE", nullable=false)
+   
+    @Column(name="STATE")
     private String state=State.ACTIVE.getState();
  
     @ManyToMany(fetch = FetchType.EAGER)

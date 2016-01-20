@@ -32,14 +32,17 @@ public class StudentRestController {
 	SSOIdUtil sSOIdUtil;
 	
 	
-	@RequestMapping(value="/student/add", method = RequestMethod.POST)
-	public Map<String, Object> addStudent(Map<String, Object> map,
-			@RequestParam("firstName") String firstName,
-			@RequestParam("lastName") String lastName,
-			@RequestParam("gender") String gender){
-		System.out.println(firstName);
-		
-		map.put("MESSAGE", "SUCCESS");
+	@RequestMapping(value="/student/add", method = RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE)
+	public Map<String, Object> addStudent(@RequestBody() Student student){
+		System.out.println(student.getFirstName());
+		Map<String, Object> map = new HashMap<String, Object>();
+		try{
+			studentService.save(student);			
+			map.put("SUCCESS", true);
+		}catch(Exception e){
+			map.put("SUCCESS", false);
+			map.put("ERROR", e.getStackTrace());
+		}
 		
 		return map;
 	}

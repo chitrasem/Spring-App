@@ -59,7 +59,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
   
-      http.exceptionHandling().accessDeniedPage("/Access_Denied");
+     // http.exceptionHandling().accessDeniedPage("/Access_Denied");
       
       http.authorizeRequests()
         .antMatchers("/", "/home").permitAll()    
@@ -69,9 +69,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .antMatchers("/dashboard","/dashboard/**").access("hasRole('TEACHER') or hasRole('DIRECTOR') or hasRole('ACCOUNTANT') ")
         .and().formLogin().loginPage("/login").successHandler(customSuccessHandler)
         .usernameParameter("ssoId").passwordParameter("password")
-        .and().rememberMe().rememberMeParameter("remember-me").tokenRepository(persistentTokenRepository());
-        /*.and().csrf()*/
-  
+        .and().exceptionHandling().accessDeniedPage("/Access_Denied")
+        .and().rememberMe().rememberMeParameter("remember-me").tokenRepository(persistentTokenRepository())
+        .and().csrf().disable();            		
+          
     }
     @Bean
     public PersistentTokenRepository persistentTokenRepository(){

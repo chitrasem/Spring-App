@@ -80,7 +80,8 @@ var student ={
 		add_student: function(){
 			$.ajax({
 				headers:{
-					"Content-Type":"application/json" 
+					'Accept': 'application/json',
+					'Content-Type': 'application/json'
 				},
 				type: 'POST',
 				data: JSON.stringify(student_info),
