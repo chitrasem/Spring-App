@@ -108,18 +108,6 @@ public class MainController {
 		return "/dashboard/profile";
 		
 	}
-	
-	
-    /**
-     * 
-     * @param model
-     * @return
-     */
-    @RequestMapping(value = "/db", method = RequestMethod.GET)
-    public String dbaPage(ModelMap model) {
-        model.addAttribute("user", sSOIdUtil.getPrincipal());
-        return "dba";
-    }
     
     /**
      * 

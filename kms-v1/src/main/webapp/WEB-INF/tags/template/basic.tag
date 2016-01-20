@@ -48,9 +48,9 @@
                                 <a href="<c:url value="/dashboard/users"/>" class="waves-effect"><i class="md md-people"></i><span> Users </span></a>
                             </li>
                             </sec:authorize>
-                            <sec:authorize access="hasRole('TEACHER')">
+                            <sec:authorize access="hasRole('TEACHER') or hasRole('DIRECTOR')">
                             <li>
-                                <a href="<c:url value="/dashboard/students"/>" class="waves-effect"><i class="md md-people"></i><span> My Students </span></a>
+                                <a href="<c:url value="/dashboard/students"/>" class="waves-effect"><i class="md md-people"></i><span>Students </span></a>
                             </li>
                             </sec:authorize>                             
                             <li>
