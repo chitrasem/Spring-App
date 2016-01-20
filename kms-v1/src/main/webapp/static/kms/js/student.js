@@ -109,8 +109,8 @@ var student ={
 					totalRecord = response['RecordTotal'];
 					createTable.allUser(response);
 					
-					var stu_id = ($("#tb_student").find("input.stu_id").val());
-					student.list_student_by_id(stu_id);
+					//var stu_id = ($("#tb_student").find("input.stu_id").val());
+					//student.list_student_by_id(stu_id);
 					
 					$("td a.stud_data").click(function(){
 						var stu_id = $(this).parent().find("input.stu_id").val();
@@ -255,9 +255,9 @@ var createTable = {
 			for(i=0; i<list.length; i++){
 				table+= "<tr>" +
 							"<td>"+(i+1)+"</td>" +
-							"<td>"+list[i][1]+" "+list[i][2]+"</td>" +
-							"<td>"+list[i][3]+"</td>" +
-							"<td><input class='stu_id' type='hidden' value='"+list[i][0]+"' />"+
+							"<td>"+list[i].firstName+" "+list[i].lastName+"</td>" +
+							"<td>"+list[i].gender+"</td>" +
+							"<td><input class='stu_id' type='hidden' value='"+list[i].id+"' />"+
 							"<a class='stud_data' title='View' href='javascript:' data-original-title='View'><i class='md md-pageview '></i></a></td>" +
 						"</tr>";
 				

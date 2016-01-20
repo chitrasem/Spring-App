@@ -5,9 +5,10 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.LogicalExpression;
-import org.hibernate.criterion.Order;import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.AliasToBeanResultTransformer;
 import org.springframework.stereotype.Repository;
 
 import com.chitra.kms.entity.Student;
@@ -21,38 +22,25 @@ public class StudentDaoImpl extends AbstractDao<Integer, Student> implements Stu
 			String lastName, 
 			String searchName, 
 			int maxResults, 
-			int firstResult) {
-		
+			int firstResult) {		
 		Criteria crit = getSession().
-				createCriteria(Student.class, "student");
-	/*	crit.setProjection(Projections.projectionList()
-				.add(Projections.alias(Projections.property("student.id"), "id"))
-				.add(Projections.alias(Projections.property(lastName),"lastName"))
-				.add(Projections.alias(Projections.property(firstName), "firstName"))
-				.add(Projections.alias(Projections.property("student.gender"), "gender")));*/
-				
+				createCriteria(Student.class, "student");				
 				crit.setProjection(Projections.projectionList().
 						add(Projections.property("student.id"),"id").
 						add(Projections.property(lastName),"lastName").
 						add(Projections.property(firstName), "firstName").
 						add(Projections.property("student.gender"), "gender"));
-		
-				
-				
 		Criterion cFirstName = Restrictions.like(firstName, searchName);
 		Criterion cLastName = Restrictions.like(lastName, searchName);
 		LogicalExpression orExp = Restrictions.or(cFirstName, cLastName);
-				crit.add(orExp);
-				
+				crit.add(orExp);				
 				crit.add(Restrictions.eq("student.user.id", userId));
 				crit.addOrder(Order.asc(lastName));
 				crit.setMaxResults(maxResults);
-				crit.setFirstResult(firstResult);
-				
-		
-		return (List<Student>)crit.list();
-		
-		
+				crit.setFirstResult(firstResult);				
+				//Convert to Student list
+				crit.setResultTransformer(new AliasToBeanResultTransformer(Student.class));			
+		return (List<Student>)crit.list();		
 	}
 
 	public void save(Student student) {

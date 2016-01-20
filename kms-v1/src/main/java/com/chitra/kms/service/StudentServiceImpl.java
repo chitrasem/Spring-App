@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.chitra.kms.dao.AbstractDao;
 import com.chitra.kms.dao.StudentDao;
 import com.chitra.kms.entity.Student;
 
@@ -18,10 +19,8 @@ public class StudentServiceImpl implements StudentService{
 	public List<Student> findAll(int userId, String firstName, String lastName, String searchName, int maxResults, int firstResults) {
 		return studentDao.findAll(userId, firstName, lastName, searchName, maxResults, firstResults);
 	}
-
-	public void save(Student student) {
-		
-		
+	public void save(Student student) {	
+		studentDao.save(student);
 	}
 
 	public Student findById(int id) {

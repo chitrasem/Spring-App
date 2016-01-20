@@ -34,11 +34,11 @@ public class StudentRestController {
 	
 	@RequestMapping(value="/student/add", method = RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE)
 	public Map<String, Object> addStudent(@RequestBody() Student student){
-		System.out.println(student.getFirstName());
 		Map<String, Object> map = new HashMap<String, Object>();
 		try{
 			studentService.save(student);			
 			map.put("SUCCESS", true);
+			map.put("MESSAGE", student.getFirstName() +" has been added successfully");
 		}catch(Exception e){
 			map.put("SUCCESS", false);
 			map.put("ERROR", e.getStackTrace());
