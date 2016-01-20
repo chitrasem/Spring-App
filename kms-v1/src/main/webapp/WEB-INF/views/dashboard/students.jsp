@@ -1,4 +1,4 @@
-<template:basic htmlTitle="My Students" bodyTitle="My Students">
+<template:basic htmlTitle="Students" bodyTitle="Students">
 	<!-- Modal -->
 	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 	  <div class="modal-dialog modal-lg">
@@ -8,6 +8,11 @@
 	  </div>
 	</div>
 	<!-- End Modal -->
+	<c:forEach var="user" items="${user.userProfiles}">
+       <c:if test="${user.type == 'DIRECTOR'}">
+       </c:if>
+ 	</c:forEach> 
+	
 
 	<div class="row font-km">
       <div class="col-md-12">
@@ -28,7 +33,17 @@
                      		<fieldset>
                      			<legend>ជម្រើសនៃការស្វែងរក</legend>
                      				<div class="row"> 
-						                <div class="col-md-8">							                	                    				   		
+						                	<div class="form-group">
+						                		<label class="col-sm-3 control-label">Filter by teacher:</label>
+						                		<div class="col-sm9">
+						                			<select class="select2" data-placeholder="Choose a Country...">
+							                			<option value="all">All</option>
+							                			<option value="chitra">Chitra</option>
+							                			<option value="sem">Sem</option>						                		
+							                		</select>
+						                		</div>
+						                	</div>	
+						                <div class="col-md-8">						                	                    				   		
 	                                        <div class="radio radio-info radio-inline">
 	                                            <input type="radio" id="kmRadio" value="km" name="langRadio" checked>
 	                                            <label for="kmRadio"> ភាសាខ្មែរ </label>

@@ -1,6 +1,7 @@
 package com.chitra.kms.controller.rest;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,20 @@ public class UserRestController {
 	@Autowired
 	private UserService service;
 	
-	
+	@RequestMapping(value="/user/all")
+	public Map<String, Object> getAllUser(){
+		Map<String, Object> map = new HashMap<String, Object>();
+		try{
+			List<User> users = (List<User>)service.findAllUsers();
+			map.put("SUCCESS", true);
+			map.put("MESSAGE", users);
+		}catch(Exception e){
+			map.put("SUCCESS", false);
+			map.put("ERROR", e.getMessage());
+		}
+		
+		return map;
+	}
 	@RequestMapping(value="checkUsername", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Map<String, Object> getUserName(@RequestParam("ssoId") String userName
 			){

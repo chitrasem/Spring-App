@@ -39,6 +39,9 @@
         <link href="<c:url value="/static/assets/fullcalendar/fullcalendar.css" />" rel="stylesheet" />
         <link href="<c:url value="/static/assets/select2/select2.css" />" rel="stylesheet" type="text/css" />
         
+        
+        <link href="<c:url value="/static/assets/select2/select2.css" />" rel="stylesheet" type="text/css" />
+        
         <!-- Custom Files -->
         <link href="<c:url value="/static/css/helper.css" />" rel="stylesheet" type="text/css" />
         <link href="<c:url value="/static/css/style.css" />" rel="stylesheet" type="text/css" />
@@ -360,6 +363,13 @@
         <script src="<c:url value="/static/assets/fullcalendar/moment.min.js" />"></script>
         <script src="<c:url value="/static/assets/fullcalendar/fullcalendar.min.js"/> "></script>
         <script src="<c:url value="/static/assets/fullcalendar/fullcalendar.js" />"></script>
+        
+        <script type="text/javascript">
+        // Select2
+        jQuery(".select2").select2({
+            width: '40%'
+        });
+        </script>
         
     </body>
 </html>
