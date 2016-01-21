@@ -8,13 +8,14 @@ var totalRecord = 0;
 var myData = {"numberOfRecord":5,		
 		"pageCount":1,
 		"lang":checkedValue,
-		"searchName":"%"
+		"searchName":"%",
+		"whereUser": "all"
 		};
 
 
 $(document).ready(function(){	
 	// list all 
-	user.list_teacher(false);
+	user.list_teacher(true);
 	
 	student.list_all_students();
 	
@@ -79,14 +80,24 @@ var student_info = {
 };
 var user = {
 	list_teacher: function(areTeachers){
-		var data = {"areTeacher": areTeachers};
+		var data = {"areTeachers": areTeachers};
 		$.ajax({
 			type: "GET",
-			data: JSON.stringify(data),
+			data: data,
 			url: '../action/service/user/all',
 			success: function(resp){
 				if(resp["SUCCESS"]==true){
 					createSelectUser.users(resp);
+					// Select2
+				    $(".select2").select2({
+				    	tages: "true",
+				        width: '40%',
+				        
+				    }).on("change", function(e){
+				    	myData["whereUser"] = e.val;
+				    	student.list_all_students();
+				    });
+				    //alert($(".select2").select2("val"));
 				}
 			}
 		});
@@ -298,20 +309,18 @@ var sendMessage = {
 var createSelectUser = {
 		users: function(data){
 			var userData = data['List'];
+			console.log(userData);
 			var selectionOption = '<select class="select2">'
 				+'<option value="all">All</option>';
 			for(var i= 0; i< userData.length; i++){
 				selectionOption += '<option value="'+userData[i].ssoId+'">'+
-				userData[i].firstName+
+				userData[i].firstName+ ' '+
 				userData[i].lastName+
 				'</option>';
 			}				
 			
 			$("#selectionUser").html(selectionOption);
-	        // Select2
-	        jQuery(".select2").select2({
-	            width: '40%'
-	        });
+	        
 		}
 		
 }

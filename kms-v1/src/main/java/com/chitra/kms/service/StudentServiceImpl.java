@@ -16,8 +16,20 @@ public class StudentServiceImpl implements StudentService{
 	@Autowired
 	StudentDao studentDao;
 
-	public List<Student> findAll(int userId, String firstName, String lastName, String searchName, int maxResults, int firstResults) {
-		return studentDao.findAll(userId, firstName, lastName, searchName, maxResults, firstResults);
+	public List<Student> findAll(int userId, 
+			String firstName, 
+			String lastName,
+			String searchName,
+			String whereUser,
+			int maxResults, 
+			int firstResults) {
+		return studentDao.findAll(userId, 
+				firstName, 
+				lastName, 
+				searchName, 
+				whereUser,
+				maxResults, 
+				firstResults);
 	}
 	public void save(Student student) {	
 		studentDao.save(student);
@@ -32,9 +44,17 @@ public class StudentServiceImpl implements StudentService{
 		return studentDao.findByFirstName(firstName);
 	}
 
-	public long countRecordListl(int userId, String firstName, String lastName, String searchName) {
+	public long countRecordListl(int userId, 
+			String firstName, 
+			String lastName, 
+			String searchName,
+			String whereUser) {
 		
-		return studentDao.countRecordListl(userId, firstName, lastName, searchName);
+		return studentDao.countRecordListl(userId, 
+				firstName, 
+				lastName, 
+				searchName,
+				whereUser);
 	}
 
 

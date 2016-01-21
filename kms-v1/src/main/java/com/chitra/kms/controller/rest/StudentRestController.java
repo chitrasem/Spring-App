@@ -49,6 +49,7 @@ public class StudentRestController {
 	@RequestMapping(value = "/student", method = RequestMethod.GET ,  produces=MediaType.APPLICATION_JSON_VALUE)
 	public Map<String, Object> findAllStudnet(@RequestParam("lang") String language,
 											@RequestParam("searchName") String searchName,
+											@RequestParam("whereUser") String whereUser,
 											@RequestParam("numberOfRecord") int numberOfRecord,
 											@RequestParam("pageCount") int pageCount){	          
 		
@@ -68,9 +69,19 @@ public class StudentRestController {
 		User user = userService.findBySso(sSOIdUtil.getPrincipal());
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		List<Student> students =  studentService.findAll(user.getId(), firstName, lastName, searchName, numberOfRecord, offset);
+		List<Student> students =  studentService.findAll(user.getId(), 
+				firstName, 
+				lastName, 
+				searchName, 
+				whereUser,
+				numberOfRecord, 
+				offset);
 		
-		long recordTotal = studentService.countRecordListl(user.getId(), firstName, lastName, searchName);
+		long recordTotal = studentService.countRecordListl(user.getId(), 
+				firstName, 
+				lastName, 
+				searchName,
+				whereUser);
 		
 		if(students == null){
              map.put("List", null);     

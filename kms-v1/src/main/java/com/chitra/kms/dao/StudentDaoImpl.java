@@ -20,9 +20,10 @@ public class StudentDaoImpl extends AbstractDao<Integer, Student> implements Stu
 	public List<Student> findAll(int userId, 
 			String firstName, 
 			String lastName, 
-			String searchName, 
+			String searchName, 		
+			String whereUser,
 			int maxResults, 
-			int firstResult) {		
+			int firstResult) {
 		Criteria crit = getSession().
 				createCriteria(Student.class, "student");				
 				crit.setProjection(Projections.projectionList().
@@ -33,8 +34,10 @@ public class StudentDaoImpl extends AbstractDao<Integer, Student> implements Stu
 		Criterion cFirstName = Restrictions.like(firstName, searchName);
 		Criterion cLastName = Restrictions.like(lastName, searchName);
 		LogicalExpression orExp = Restrictions.or(cFirstName, cLastName);
-				crit.add(orExp);				
-				crit.add(Restrictions.eq("student.user.id", userId));
+				crit.add(orExp);
+				if(whereUser !="all"){
+					crit.add(Restrictions.eq("student.user.id", userId));					
+				}
 				crit.addOrder(Order.asc(lastName));
 				crit.setMaxResults(maxResults);
 				crit.setFirstResult(firstResult);				
@@ -67,7 +70,8 @@ public class StudentDaoImpl extends AbstractDao<Integer, Student> implements Stu
 	public long countRecordListl(int userId, 
 			String firstName, 
 			String lastName, 
-			String searchName) {
+			String searchName,
+			String whereUser) {
 		
 		Criteria query = getSession().
 				createCriteria(Student.class, "student");

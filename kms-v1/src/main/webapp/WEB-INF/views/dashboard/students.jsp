@@ -35,7 +35,7 @@
                      				<div class="row"> 
 						                	<div class="form-group">
 						                		<label class="col-sm-3 control-label">Filter by teacher:</label>
-						                		<div class="col-sm9" id="selectionUser">
+						                		<div class="col-m3" id="selectionUser">
 						                			
 						                		</div>
 						                	</div>	

@@ -32,11 +32,10 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
 
 	@SuppressWarnings("unchecked")
 	public List<User> findAllUsers(Boolean areTeachers) {
-		//Criteria crit = createEntityCriteria();
 		 Criteria crit = getSession().createCriteria(User.class, "u")
 				 .setProjection(Projections.projectionList()
 						 .add(Projections.property("u.firstName"),"firstName")
-						 .add(Projections.property("u.ssoId"),"ssoId")
+						 .add(Projections.property("ssoId"),"ssoId")
 						 .add(Projections.property("lastName"),"lastName")								 
 						 );
 
