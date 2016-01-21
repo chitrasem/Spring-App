@@ -16,18 +16,18 @@ public class StudentServiceImpl implements StudentService{
 	@Autowired
 	StudentDao studentDao;
 
-	public List<Student> findAll(int userId, 
+	public List<Student> findAll(
 			String firstName, 
 			String lastName,
 			String searchName,
-			String whereUser,
+			int whereUserId,
 			int maxResults, 
 			int firstResults) {
-		return studentDao.findAll(userId, 
+		return studentDao.findAll(
 				firstName, 
 				lastName, 
 				searchName, 
-				whereUser,
+				whereUserId,
 				maxResults, 
 				firstResults);
 	}
@@ -44,17 +44,17 @@ public class StudentServiceImpl implements StudentService{
 		return studentDao.findByFirstName(firstName);
 	}
 
-	public long countRecordListl(int userId, 
+	public long countRecordListl(
 			String firstName, 
 			String lastName, 
 			String searchName,
-			String whereUser) {
+			int whereUserId) {
 		
-		return studentDao.countRecordListl(userId, 
+		return studentDao.countRecordListl( 
 				firstName, 
 				lastName, 
 				searchName,
-				whereUser);
+				whereUserId);
 	}
 
 

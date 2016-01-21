@@ -35,7 +35,7 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
 		 Criteria crit = getSession().createCriteria(User.class, "u")
 				 .setProjection(Projections.projectionList()
 						 .add(Projections.property("u.firstName"),"firstName")
-						 .add(Projections.property("ssoId"),"ssoId")
+						 .add(Projections.property("id"),"id")
 						 .add(Projections.property("lastName"),"lastName")								 
 						 );
 

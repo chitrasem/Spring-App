@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.chitra.kms.entity.Student;
-import com.chitra.kms.entity.User;
 import com.chitra.kms.service.StudentService;
 import com.chitra.kms.service.UserService;
 import com.chitra.kms.utils.SSOIdUtil;
@@ -49,7 +48,7 @@ public class StudentRestController {
 	@RequestMapping(value = "/student", method = RequestMethod.GET ,  produces=MediaType.APPLICATION_JSON_VALUE)
 	public Map<String, Object> findAllStudnet(@RequestParam("lang") String language,
 											@RequestParam("searchName") String searchName,
-											@RequestParam("whereUser") String whereUser,
+											@RequestParam("whereUser") int whereUserId,
 											@RequestParam("numberOfRecord") int numberOfRecord,
 											@RequestParam("pageCount") int pageCount){	          
 		
@@ -66,22 +65,22 @@ public class StudentRestController {
 		}
 		
 		sSOIdUtil = new SSOIdUtil();		
-		User user = userService.findBySso(sSOIdUtil.getPrincipal());
+		//User user = userService.findBySso(sSOIdUtil.getPrincipal());
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		List<Student> students =  studentService.findAll(user.getId(), 
+		List<Student> students =  studentService.findAll(
 				firstName, 
 				lastName, 
 				searchName, 
-				whereUser,
+				whereUserId,
 				numberOfRecord, 
 				offset);
 		
-		long recordTotal = studentService.countRecordListl(user.getId(), 
+		long recordTotal = studentService.countRecordListl(
 				firstName, 
 				lastName, 
 				searchName,
-				whereUser);
+				whereUserId);
 		
 		if(students == null){
              map.put("List", null);     

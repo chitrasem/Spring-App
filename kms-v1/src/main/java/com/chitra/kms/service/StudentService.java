@@ -6,18 +6,18 @@ import com.chitra.kms.entity.Student;
 
 public interface StudentService {
 	
-	List<Student> findAll(int userId, 
+	List<Student> findAll(
 			String firstName, 
 			String lastName,
 			String searchName,
-			String whereUser,
+			int whereUserId,
 			int maxResult, 
 			int firstResult);
-	long countRecordListl(int userId, 
+	long countRecordListl( 
 			String firstName, 
 			String lastName,
 			String searchName,
-			String whereUser);
+			int whereUserId);
 	void save(Student student);
 	Student findById(int id);
 	Student findByFirstName(String firstName);

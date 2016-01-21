@@ -17,11 +17,11 @@ import com.chitra.kms.entity.Student;
 public class StudentDaoImpl extends AbstractDao<Integer, Student> implements StudentDao{
 
 	@SuppressWarnings("unchecked")
-	public List<Student> findAll(int userId, 
+	public List<Student> findAll( 
 			String firstName, 
 			String lastName, 
 			String searchName, 		
-			String whereUser,
+			int whereUserId,
 			int maxResults, 
 			int firstResult) {
 		Criteria crit = getSession().
@@ -30,13 +30,15 @@ public class StudentDaoImpl extends AbstractDao<Integer, Student> implements Stu
 						add(Projections.property("student.id"),"id").
 						add(Projections.property(lastName),"lastName").
 						add(Projections.property(firstName), "firstName").
+						add(Projections.property("student.dateOfBirth"), "dateOfBirth").
+						add(Projections.property("student.phoneNumber"), "phoneNumber").
 						add(Projections.property("student.gender"), "gender"));
 		Criterion cFirstName = Restrictions.like(firstName, searchName);
 		Criterion cLastName = Restrictions.like(lastName, searchName);
 		LogicalExpression orExp = Restrictions.or(cFirstName, cLastName);
 				crit.add(orExp);
-				if(whereUser !="all"){
-					crit.add(Restrictions.eq("student.user.id", userId));					
+				if(whereUserId > 0){
+					crit.add(Restrictions.eq("student.user.id", whereUserId));						
 				}
 				crit.addOrder(Order.asc(lastName));
 				crit.setMaxResults(maxResults);
@@ -67,11 +69,11 @@ public class StudentDaoImpl extends AbstractDao<Integer, Student> implements Stu
 	/**
 	 * 
 	 */
-	public long countRecordListl(int userId, 
+	public long countRecordListl(
 			String firstName, 
 			String lastName, 
 			String searchName,
-			String whereUser) {
+			int whereUserId) {
 		
 		Criteria query = getSession().
 				createCriteria(Student.class, "student");
@@ -81,8 +83,12 @@ public class StudentDaoImpl extends AbstractDao<Integer, Student> implements Stu
 		Criterion cFirstName = Restrictions.like(firstName, searchName);
 		Criterion cLastName = Restrictions.like(lastName, searchName);
 		LogicalExpression orExp = Restrictions.or(cFirstName, cLastName);
-				query.add(orExp);				
-				query.add(Restrictions.eq("student.user.id", userId));
+				query.add(orExp);			
+
+				if(whereUserId > 0){
+					query.add(Restrictions.eq("student.user.id", whereUserId));						
+				}
+				//query.add(Restrictions.eq("student.user.id", userId));
 				
 		return (Long) query.uniqueResult();
 	}

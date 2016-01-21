@@ -9,10 +9,8 @@ var myData = {"numberOfRecord":5,
 		"pageCount":1,
 		"lang":checkedValue,
 		"searchName":"%",
-		"whereUser": "all"
+		"whereUser": 0
 		};
-
-
 $(document).ready(function(){	
 	// list all 
 	user.list_teacher(true);
@@ -115,7 +113,6 @@ var student ={
 				url: '../dashboard/student/add',
 				success: function(resp){
 					console.log(resp);
-					alert("Su");
 					student.list_all_students();
 				}
 				
@@ -274,6 +271,8 @@ var createTable = {
 								"<th>#</th>" +
 								"<th>នាមត្រកូល និង នាមខ្លួន</th>" +
 								"<th>ភេទ</th>" +
+								"<th>ថ្ងៃ ខែ ឆ្នាំ កំណើត</th>" +
+								"<th>ភេទ</th>" +
 								"<th>ចូលមើល</th>" +
 							"</tr>" +
 						"</thead>" +
@@ -284,6 +283,8 @@ var createTable = {
 							"<td>"+(i+1)+"</td>" +
 							"<td>"+list[i].firstName+" "+list[i].lastName+"</td>" +
 							"<td>"+list[i].gender+"</td>" +
+							"<td>"+list[i].dateOfBirth+"</td>" +
+							"<td>"+list[i].phoneNumber+"</td>" +
 							"<td><input class='stu_id' type='hidden' value='"+list[i].id+"' />"+
 							"<a class='stud_data' title='View' href='javascript:' data-original-title='View'><i class='md md-pageview '></i></a></td>" +
 						"</tr>";
@@ -309,11 +310,10 @@ var sendMessage = {
 var createSelectUser = {
 		users: function(data){
 			var userData = data['List'];
-			console.log(userData);
 			var selectionOption = '<select class="select2">'
-				+'<option value="all">All</option>';
+				+'<option value="'+Number(0)+'">All</option>';
 			for(var i= 0; i< userData.length; i++){
-				selectionOption += '<option value="'+userData[i].ssoId+'">'+
+				selectionOption += '<option value="'+Number(userData[i].id)+'">'+
 				userData[i].firstName+ ' '+
 				userData[i].lastName+
 				'</option>';
