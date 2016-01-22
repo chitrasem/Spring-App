@@ -281,13 +281,19 @@ var createTable = {
 			for(i=0; i<list.length; i++){
 				table+= "<tr>" +
 							"<td>"+(i+1)+"</td>" +
-							"<td>"+list[i].firstName+" "+list[i].lastName+"</td>" +
-							"<td>"+list[i].gender+"</td>" +
-							"<td>"+list[i].dateOfBirth['values']['2']+" /" +
+							"<td>"+
+								list[i].lastName+ " "+
+								list[i].firstName+
+							"</td>" +
+							"<td>"+
+								list[i].gender+"</td>" +
+							"<td>"+
+								list[i].dateOfBirth['values']['2']+" /" +
 								list[i].dateOfBirth['values']['1'] + " /" +
 								list[i].dateOfBirth['values']['0'] +
 							"</td>" +
-							"<td>"+list[i].phoneNumber+"</td>" +
+							"<td>"+
+								list[i].phoneNumber+"</td>" +
 							"<td><input class='stu_id' type='hidden' value='"+list[i].id+"' />"+
 							"<a class='stud_data' title='View' href='javascript:' data-original-title='View'><i class='md md-pageview '></i></a></td>" +
 						"</tr>";

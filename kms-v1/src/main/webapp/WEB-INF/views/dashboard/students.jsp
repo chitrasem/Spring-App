@@ -33,34 +33,52 @@
                      		<fieldset>
                      			<legend>ជម្រើសនៃការស្វែងរក</legend>
                      				<div class="row"> 
-						                	<div class="form-group">
-						                		<label class="col-sm-3 control-label">Filter by teacher:</label>
-						                		<div class="col-m3" id="selectionUser">
-						                			
-						                		</div>
-						                	</div>	
-						                <div class="col-md-8">						                	                    				   		
-	                                        <div class="radio radio-info radio-inline">
-	                                            <input type="radio" id="kmRadio" value="km" name="langRadio" checked>
-	                                            <label for="kmRadio"> ភាសាខ្មែរ </label>
-	                                        </div>
-	                                        <div class="radio radio-info radio-inline">
-	                                            <input type="radio" id="enRadio" value="en" name="langRadio">
-	                                            <label for="enRadio"> English </label>
-	                                        </div>
-						                </div>
-                     				   <div class="col-md-8">                      				   		
-	                                        <div class="input-group">
-							                    <input type="text" id="searchName" name="example-input1-group2" class="form-control input-sm" placeholder="ស្វែងរកតាមរយៈឈ្មោះ...">
-							                    <span class="input-group-btn">
-							                        <button id="btnSearchName" type="button" class="btn-sm btn waves-effect waves-light btn-primary w-md"><i class="fa fa-search"></i></button>
-							                    </span>
+                     					<div class="col-sm-12">
+                     						<div class="col-sm-6">
+							                	<div class="form-group">
+							                		<label class="col-sm-3 control-label">គ្រូបង្រៀន:</label>
+							                		<div class="col-m3" id="selectionUser">						                			
+							                		</div>
+							                	</div>                     						
+                     						</div>
+                     						<div class="col-sm-6">
+							                	<div class="form-group">
+							                		<label class="col-sm-3 control-label">កំរិតសៀវភៅ</label>
+							                		<div class="col-m3" id="selectionClassRoom">
+							                			<select>
+							                				<option>EIC1</option>							                				
+							                				<option>EIC2</option>
+							                			</select>						                			
+							                		</div>
+							                	</div>                     						
+                     						</div>	
+                     					
+                     					</div>
+                     					<div class="col-sm-12">                     					
+							                <div class="col-md-8">						                	                    				   		
+		                                        <div class="radio radio-info radio-inline">
+		                                            <input type="radio" id="kmRadio" value="km" name="langRadio" checked>
+		                                            <label for="kmRadio"> ភាសាខ្មែរ </label>
+		                                        </div>
+		                                        <div class="radio radio-info radio-inline">
+		                                            <input type="radio" id="enRadio" value="en" name="langRadio">
+		                                            <label for="enRadio"> English </label>
+		                                        </div>
 							                </div>
-                     				   </div>
-                     				   <div class="alert alert-info">
-                     				   	<p id="messageTyping"></p>                     				   	
-                     				   <br/><br/>
-									   </div>
+	                     				   <div class="col-md-8">                      				   		
+		                                        <div class="input-group">
+								                    <input type="text" id="searchName" name="example-input1-group2" class="form-control input-sm" placeholder="ស្វែងរកតាមរយៈឈ្មោះសិស្ស...">
+								                    <span class="input-group-btn">
+								                        <button id="btnSearchName" type="button" class="btn-sm btn waves-effect waves-light btn-primary w-md"><i class="fa fa-search"></i></button>
+								                    </span>
+								                </div>
+	                     				   </div>
+	                     				   <div class="alert alert-info">
+	                     				   		<p id="messageTyping"></p>                     				   	
+	                     				   <br/><br/>
+										   </div>
+                     					
+                     					</div>
                      				</div>
                      		</fieldset>
                      	
