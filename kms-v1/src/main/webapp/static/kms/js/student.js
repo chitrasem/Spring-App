@@ -5,7 +5,7 @@ $(window).load(function(){
 var myRadio = $('input[name=langRadio]');
 var checkedValue = myRadio.filter(':checked').val();
 var totalRecord = 0;
-var myData = {"numberOfRecord":5,		
+var myData = {"numberOfRecord":10,		
 		"pageCount":1,
 		"lang":checkedValue,
 		"searchName":"%",
@@ -93,9 +93,9 @@ var user = {
 				        
 				    }).on("change", function(e){
 				    	myData["whereUser"] = e.val;
+				    	myData['pageCount'] = 1;
 				    	student.list_all_students();
 				    });
-				    //alert($(".select2").select2("val"));
 				}
 			}
 		});
@@ -272,7 +272,7 @@ var createTable = {
 								"<th>នាមត្រកូល និង នាមខ្លួន</th>" +
 								"<th>ភេទ</th>" +
 								"<th>ថ្ងៃ ខែ ឆ្នាំ កំណើត</th>" +
-								"<th>ភេទ</th>" +
+								"<th>លេខទូរស័ព្ទ</th>" +
 								"<th>ចូលមើល</th>" +
 							"</tr>" +
 						"</thead>" +
@@ -283,7 +283,10 @@ var createTable = {
 							"<td>"+(i+1)+"</td>" +
 							"<td>"+list[i].firstName+" "+list[i].lastName+"</td>" +
 							"<td>"+list[i].gender+"</td>" +
-							"<td>"+list[i].dateOfBirth+"</td>" +
+							"<td>"+list[i].dateOfBirth['values']['2']+" /" +
+								list[i].dateOfBirth['values']['1'] + " /" +
+								list[i].dateOfBirth['values']['0'] +
+							"</td>" +
 							"<td>"+list[i].phoneNumber+"</td>" +
 							"<td><input class='stu_id' type='hidden' value='"+list[i].id+"' />"+
 							"<a class='stud_data' title='View' href='javascript:' data-original-title='View'><i class='md md-pageview '></i></a></td>" +
