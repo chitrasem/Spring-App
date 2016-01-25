@@ -3,7 +3,37 @@
 	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 	  <div class="modal-dialog modal-lg">
 	    <div class="modal-content">
-	      ...
+	      <form>
+	      	<fieldset>
+	      		<legend>ពត៌មានអំពីសិស្ស:</legend>
+	      		
+		      	<div class="col-sm-12 ">
+		      		<div class="col-sm-6">
+			      		<label>First name:</label>
+			      		<input type="text" >
+		      		</div>
+		      		<div class="col-sm-6">
+			      		<label>First name:</label>
+			      		<input type="text" > 
+		      		</div> 
+		      		<div class="radio">
+					  <label>
+					    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+					    Male
+					  </label>
+					</div>
+					<div class="radio">
+					  <label>
+					    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+					    Female
+					  </label>
+					</div>
+		      		
+		      	</div>
+		      	<legend>ពត៏មានអំពីគ្រួសារ</legend>
+		      	
+	      	</fieldset>
+	      </form>
 	    </div>
 	  </div>
 	</div>

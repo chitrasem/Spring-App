@@ -39,7 +39,7 @@ $(document).ready(function(){
 		
 	});
 	$("#add_student").click(function(){
-		student.add_student();
+		//student.add_student();
 	});
 	
 	var typingTimer;
@@ -102,6 +102,17 @@ var user = {
 	}	
 };
 var student ={
+		validate: function(form){
+			if(form.firstName==""){
+				form.firstName.focus();
+			}else if(form.lastName==""){
+				form.lastName.focus();
+			}
+			else{
+				form.submit();
+			}
+			
+		},
 		add_student: function(){
 			$.ajax({
 				headers:{
