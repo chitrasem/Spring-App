@@ -47,7 +47,7 @@
                 	<div class="col-sm-6 form-group">
                 		<label for="birthDate" class="col-sm-5 control-label">ថ្ងៃ ខែ ឆ្នាំ កំណើត៖</label>
                 		<div class="col-sm-7">                			
-                			<input type="date" id="birthDate" class="form-control" >
+                			<input type="date" id="dateOfBirth" class="form-control" >
                 		</div>
                 	</div>
 	      		</div>
@@ -68,7 +68,7 @@
 		      	</div> 
 		      	<legend>ពត៏មានអំពីគ្រួសារ</legend>
 		      	
-		      	<input type="submit" id="btnAdd" value="Add" >
+		      	<input type="button" class="btn btn-info" id="btnAdd" value="Add" >
 		      	
 	      	</fieldset>
 	      </form>
@@ -93,7 +93,7 @@
                   
                  	<!-- Open Modal -->
 					<div class="pull-right btn-group-sm">
-	                          <button type="button" id="add_student" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Add Student</button>
+	                          <button type="button" id="add_student" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">ចុះឈ្មោះសិស្ស</button>
 	                </div>
 	                <!-- ******************************************************* -->
                   

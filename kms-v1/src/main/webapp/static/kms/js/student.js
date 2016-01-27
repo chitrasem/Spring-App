@@ -58,19 +58,19 @@ $(document).ready(function(){
 		if($(this).val() == "Add"){
 			//student.validate(this.form);
 			//var formStudent = this.form;
-			//alert(formStudent.kmLastName.value);
-			if(validateForm(target)){
-				
-			}
+			//alert(formStudent.kmLastName.value);			
 			
 			student_info['firstName']	= $("#firstName").val();
 			student_info['lastName']	= $("#lastName").val();
 			student_info['kmFirstName']	= $("#kmFirstName").val();
 			student_info['kmLastName']	= $("#kmLastName").val();
 			student_info['gender']		= $("#gender").val();
-			student_info['nationality']	= $("#nationality").val();
+			student_info['dateOfBirth']	= $("#dateOfBirth").val();
+			//student_info['nationality']	= $("#nationality").val();
 			
-			//student.add_student();
+			if(validateForm()){
+				student.add_student();
+			}
 		}else{
 			student.update_student();
 		}
@@ -141,6 +141,7 @@ var student ={
 				data: JSON.stringify(student_info),
 				url: '../dashboard/student/add',
 				success: function(resp){
+					alert("Adding!");
 					console.log(resp);
 					student.list_all_students();
 				}
@@ -366,12 +367,33 @@ var createSelectUser = {
 		}
 		
 }
-var validateForm = function(target){
-	if($(target.val()=="")){
-		$(target).focus();
-		return false;
-	}else{
-		return true;
+var validateForm = function(){
+	var isValid = true;
+	if(student_info['kmLastName']==""){
+		$("#kmLastName").focus();
+		isValid = false;
+	}else if(student_info['lastName']==""){
+		$("#lastName").focus();
+		isValid = false;
+	}else if(student_info['kmFirstName']==""){
+		$("#kmFirstName").focus();
+		isValid = false;
+	}else if(student_info['firstName']==""){
+		$("#firstName").focus();
+		isValid = false;
+	}else if(student_info['gender']==""){
+		$("#gender").focus();
+		isValid = false;
+	}/*else if(student_info['dateOfBirth']==""){
+		$("#dateOfBirth").focus();
+		isValid = false;
+	}*/else if(student_info['nationality']==""){
+		$("#nationality").focus();
+		isValid = false;
 	}
+	else{
+		isValid = true;
+	}
+	return isValid;
 	
 }
