@@ -1,7 +1,10 @@
 $(window).load(function(){
 	//$("#stu_infor_details").display("none");	
+	
 });
 
+
+var student_info = {};
 var myRadio = $('input[name=langRadio]');
 var checkedValue = myRadio.filter(':checked').val();
 var totalRecord = 0;
@@ -12,6 +15,12 @@ var myData = {"numberOfRecord":10,
 		"whereUser": 0
 		};
 $(document).ready(function(){	
+	$(".select2").select2({
+		tages: "true",
+        width: '100%',
+		
+	});
+	
 	// list all 
 	user.list_teacher(true);
 	
@@ -38,8 +47,34 @@ $(document).ready(function(){
 		student.list_all_students();
 		
 	});
+	
+	// Show modal adding form
 	$("#add_student").click(function(){
 		//student.add_student();
+	});	
+	// adding or updating students
+	
+	$("#btnAdd").click(function(){
+		if($(this).val() == "Add"){
+			//student.validate(this.form);
+			//var formStudent = this.form;
+			//alert(formStudent.kmLastName.value);
+			if(validateForm(target)){
+				
+			}
+			
+			student_info['firstName']	= $("#firstName").val();
+			student_info['lastName']	= $("#lastName").val();
+			student_info['kmFirstName']	= $("#kmFirstName").val();
+			student_info['kmLastName']	= $("#kmLastName").val();
+			student_info['gender']		= $("#gender").val();
+			student_info['nationality']	= $("#nationality").val();
+			
+			//student.add_student();
+		}else{
+			student.update_student();
+		}
+		
 	});
 	
 	var typingTimer;
@@ -70,12 +105,6 @@ $(document).ready(function(){
 	
 	
 });
-
-var student_info = {
-		'firstName':'Chitra',
-		'lastName':'Sem',
-		'gender': 'M'
-};
 var user = {
 	list_teacher: function(areTeachers){
 		var data = {"areTeachers": areTeachers};
@@ -102,17 +131,6 @@ var user = {
 	}	
 };
 var student ={
-		validate: function(form){
-			if(form.firstName==""){
-				form.firstName.focus();
-			}else if(form.lastName==""){
-				form.lastName.focus();
-			}
-			else{
-				form.submit();
-			}
-			
-		},
 		add_student: function(){
 			$.ajax({
 				headers:{
@@ -129,6 +147,10 @@ var student ={
 				
 			});
 		},
+		update_student: function(){
+			alert("udated");
+		}
+		,
 		list_all_students: function(){
 			$.ajax({
 				type: "GET",
@@ -343,4 +365,13 @@ var createSelectUser = {
 	        
 		}
 		
+}
+var validateForm = function(target){
+	if($(target.val()=="")){
+		$(target).focus();
+		return false;
+	}else{
+		return true;
+	}
+	
 }

@@ -5,32 +5,70 @@
 	    <div class="modal-content">
 	      <form>
 	      	<fieldset>
-	      		<legend>ពត៌មានអំពីសិស្ស:</legend>
-	      		
+	      		<legend>ពត៌មានអំពីសិស្ស៖</legend>	      		
 		      	<div class="col-sm-12 ">
-		      		<div class="col-sm-6">
-			      		<label>First name:</label>
-			      		<input type="text" >
-		      		</div>
-		      		<div class="col-sm-6">
-			      		<label>First name:</label>
-			      		<input type="text" > 
-		      		</div> 
-		      		<div class="radio">
-					  <label>
-					    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-					    Male
-					  </label>
-					</div>
-					<div class="radio">
-					  <label>
-					    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-					    Female
-					  </label>
-					</div>
-		      		
-		      	</div>
+		      		<div class="col-sm-6 form-group">
+			      		<label for="kmLastName" class="col-sm-5 control-label">នាមត្រកូល៖</label>
+			      		<div class="col-sm-7">
+			      			<input type="text" id="kmLastName" name="kmLastName" class="form-control" >
+			      		</div>	
+		      		</div>	
+		      		<div class="col-sm-6 form-group">
+			      		<label for="lastName" class="col-sm-5 control-label">ជាភាសាអង់គ្លេស៖</label>
+			      		<div class="col-sm-7">
+			      			<input type="text" id="lastName" class="form-control" >
+			      		</div>	
+		      		</div>	      		
+		      	</div>      		
+		      	<div class="col-sm-12 ">
+		      		<div class="col-sm-6 form-group">
+			      		<label for="kmFirstName" class="col-sm-5 control-label">នាមខ្លួន៖</label>
+			      		<div class="col-sm-7">
+			      			<input id="kmFirstName" type="text" class="form-control" >
+			      		</div>	
+		      		</div>	
+		      		<div class="col-sm-6 form-group">
+			      		<label for="firstName" class="col-sm-5 control-label">ជាភាសាអង់គ្លេស៖</label>
+			      		<div class="col-sm-7">
+			      			<input id="firstName" type="text" class="form-control" >
+			      		</div>	
+		      		</div>	      		
+		      	</div> 
+	      		<div class="col-sm-12">
+                	<div class="col-sm-6 form-group">
+                		<label for="gender" class="col-sm-5 control-label">ភេទ៖</label>
+                		<div class="col-sm-7" id="selectionGender">
+                			<select id="gender" class="form-control">
+                				<option value="M">ប្រុស</option>							                				
+                				<option value="F">ស្រី</option>
+                			</select>						                			
+                		</div>
+                	</div> 
+                	<div class="col-sm-6 form-group">
+                		<label for="birthDate" class="col-sm-5 control-label">ថ្ងៃ ខែ ឆ្នាំ កំណើត៖</label>
+                		<div class="col-sm-7">                			
+                			<input type="date" id="birthDate" class="form-control" >
+                		</div>
+                	</div>
+	      		</div>
+	      		      		
+		      	<div class="col-sm-12 ">
+		      		<div class="col-sm-6 form-group">
+			      		<label for="nationality" class="col-sm-5 control-label">សញ្ជាតិ៖</label>
+			      		<div class="col-sm-7">
+			      			<input id="nationality" type="text" class="form-control" >
+			      		</div>	
+		      		</div>	
+		      		<div class="col-sm-6 form-group">
+			      		<label class="col-sm-5 control-label">ជាភាសាអង់គ្លេស៖</label>
+			      		<div class="col-sm-7">
+			      			<input type="text" class="form-control" >
+			      		</div>	
+		      		</div>	      		
+		      	</div> 
 		      	<legend>ពត៏មានអំពីគ្រួសារ</legend>
+		      	
+		      	<input type="submit" id="btnAdd" value="Add" >
 		      	
 	      	</fieldset>
 	      </form>

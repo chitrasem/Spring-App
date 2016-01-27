@@ -43,6 +43,7 @@ public class Student {
     @Column(name = "BIRTHDATE")
     @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     private LocalDate dateOfBirth;
+  
     
     @Column(name = "GENDER", nullable=false)
 	private String gender;
