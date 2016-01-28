@@ -65,12 +65,21 @@ $(document).ready(function(){
 			student_info['kmFirstName']	= $("#kmFirstName").val();
 			student_info['kmLastName']	= $("#kmLastName").val();
 			student_info['gender']		= $("#gender").val();
-			student_info['dateOfBirth']	= $("#dateOfBirth").val();
-			//student_info['nationality']	= $("#nationality").val();
+			student_info['nationality']	= $("#nationality").val();	
+			//var  d = new Date($("#dateOfBirth").val());
+			//student_info['dateOfBirth'] = d;
+			student_info['dateOfBirth'] = $("#dateOfBirth").val();
 			
-			if(validateForm()){
-				student.add_student();
-			}
+			console.log(student_info);
+			student.add_student();
+			
+			
+		//	student_info['dateOfBirth'] = toLocalDate(d);
+			
+			/*if(validateForm()){
+				console.log(student_info['dateOfBirth']);
+				//student.add_student();
+			}*/
 		}else{
 			student.update_student();
 		}
@@ -384,10 +393,10 @@ var validateForm = function(){
 	}else if(student_info['gender']==""){
 		$("#gender").focus();
 		isValid = false;
-	}/*else if(student_info['dateOfBirth']==""){
+	}else if(student_info['dateOfBirth']==""){
 		$("#dateOfBirth").focus();
 		isValid = false;
-	}*/else if(student_info['nationality']==""){
+	}else if(student_info['nationality']==""){
 		$("#nationality").focus();
 		isValid = false;
 	}
@@ -396,4 +405,10 @@ var validateForm = function(){
 	}
 	return isValid;
 	
+}
+function toLocalDate (inDate) {
+	
+    var date = new Date();
+    date.setTime(inDate.valueOf() + 60000 * inDate.getTimezoneOffset());
+    return date;
 }

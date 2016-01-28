@@ -110,6 +110,7 @@ public class Student {
 		return dateOfBirth;
 	}
 	public void setDateOfBirth(LocalDate dateOfBirth) {
+		
 		this.dateOfBirth = dateOfBirth;
 	}
 	public String getNationality() {
@@ -174,6 +175,12 @@ public class Student {
 	}
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "student[id ="+ id +",dateOfBirth="+dateOfBirth+"]";
 	}
 
 }

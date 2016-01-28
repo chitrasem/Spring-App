@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,6 +36,11 @@ public class StudentRestController {
 	
 	@RequestMapping(value="/student/add", method = RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE)
 	public Map<String, Object> addStudent(@RequestBody() Student student){
+		System.out.println(student.getFirstName());
+		System.out.println(student.getDateOfBirth());
+		
+		
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		try{
 			studentService.save(student);			

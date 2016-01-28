@@ -47,7 +47,7 @@
                 	<div class="col-sm-6 form-group">
                 		<label for="birthDate" class="col-sm-5 control-label">ថ្ងៃ ខែ ឆ្នាំ កំណើត៖</label>
                 		<div class="col-sm-7">                			
-                			<input type="date" id="dateOfBirth" class="form-control" >
+                			<input type="text" id="dateOfBirth" class="form-control" >
                 		</div>
                 	</div>
 	      		</div>
@@ -67,6 +67,46 @@
 		      		</div>	      		
 		      	</div> 
 		      	<legend>ពត៏មានអំពីគ្រួសារ</legend>
+		      	<div class="col-sm-12">
+		      		<div class="col-sm-6 form-group">
+		      			<label for="city" class="col-sm-5 control-label">ក្រុង/រាជធានី</label>
+		      			<div class="col-sm-7">
+		      				<select id="gender" class="form-control">
+	               				<option value="pnp">ភ្នំពេញ</option>							                				
+	               				<option value="knd">កណ្តាល</option>
+	               			</select>
+		      			</div>
+		      		</div>
+		      		<div class="col-sm-6 form-group">
+		      			<label for="city" class="col-sm-5 control-label">ខ័ណ្ឌ/ស្រុក</label>
+		      			<div class="col-sm-7">
+		      				<select id="gender" class="form-control">
+	               				<option value="psc">ពោធិសែនជ័យ</option>							                				
+	               				<option value="dgk">ដង្កោ</option>
+	               			</select>
+		      			</div>
+		      		</div>
+		      	</div>
+		      	<div class="col-sm-12">
+		      		<div class="col-sm-6 form-group">
+		      			<label for="city" class="col-sm-5 control-label">សង្កាត់/ឃុំ</label>
+		      			<div class="col-sm-7">
+		      				<select id="gender" class="form-control">
+	               				<option value="pnp">ភ្នំពេញ</option>							                				
+	               				<option value="knd">កណ្តាល</option>
+	               			</select>
+		      			</div>
+		      		</div>
+		      		<div class="col-sm-6 form-group">
+		      			<label for="city" class="col-sm-5 control-label">ខ័ណ្ឌ/ស្រុក</label>
+		      			<div class="col-sm-7">
+		      				<select id="gender" class="form-control">
+	               				<option value="psc">ចោមចៅ</option>							                				
+	               				<option value="dgk">ភ្លើងឆេះរទេះ</option>
+	               			</select>
+		      			</div>
+		      		</div>
+		      	</div>
 		      	
 		      	<input type="button" class="btn btn-info" id="btnAdd" value="Add" >
 		      	
