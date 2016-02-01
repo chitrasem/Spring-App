@@ -53,6 +53,13 @@ $(document).ready(function(){
 		//student.add_student();
 	});	
 	// adding or updating students
+	$("#show_new_student").click(function(){
+		if($("#new-student-form").is(":visible")){		
+			$("#new-student-form").hide(100);
+		}else{
+			$("#new-student-form").show(1000);			
+		}
+	});
 	
 	$("#btnAdd").click(function(){
 		if($(this).val() == "Add"){

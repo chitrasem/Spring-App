@@ -213,8 +213,34 @@
                   
                  	<!-- Open Modal -->
 					<div class="pull-right btn-group-sm">
-	                          <button type="button" id="add_student" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">ចុះឈ្មោះសិស្ស</button>
+                       <button type="button" id="add_student" class="btn waves-effect waves-light btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">ចុះឈ្មោះសិស្ស</button>
+                      <button type="button" id="show_new_student" class="btn btn btn-info waves-effect waves-light">បង្ហាញសិស្សថ្មី</button>
 	                </div>
+	                <div id="new-student-form" class="col-sm-12" style="display:none">
+	                	<table class="table ">
+	                		<thead>
+	                			<tr>
+	                				<th>#</th>
+	                				<th>Name</th>
+	                				<th>Gender</th>
+	                				<th>Date of Birth</th>
+	                				<th>Phone Number</th>
+	                			</tr>
+	                		</thead>
+	                			<tr>
+	                				<td>1</td>
+	                				<td>Sem Chitra</td>
+	                				<td>Male</td>
+	                				<td>1990-04-11</td>
+	                				<td>086457324</td>
+	                			</tr>
+	                		
+	                		<tbody>
+	                		</tbody>
+	                	</table>
+	                </div>
+	                          
+	           
 	                <!-- ******************************************************* -->
                   
                       <div class="col-md-12 col-sm-12 col-xs-12">
