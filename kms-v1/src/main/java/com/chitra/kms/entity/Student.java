@@ -1,6 +1,7 @@
 package com.chitra.kms.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,12 +15,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
-import org.hibernate.annotations.Type;
-import org.joda.time.LocalDate;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="APP_STUDENT")
@@ -39,10 +39,11 @@ public class Student {
     private String kmFirstName;
     private String kmLastName;
     
-    @DateTimeFormat(pattern="dd/MM/yyyy") 
+    //@DateTimeFormat(pattern="dd/MM/yyyy") 
     @Column(name = "BIRTHDATE")
-    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    private LocalDate dateOfBirth;
+    //@Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+    @Temporal(TemporalType.DATE)
+    private Date dateOfBirth;
   
     
     @Column(name = "GENDER", nullable=false)
@@ -106,10 +107,10 @@ public class Student {
 	public void setKmLastName(String kmLastName) {
 		this.kmLastName = kmLastName;
 	}
-	public LocalDate getDateOfBirth() {
+	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
-	public void setDateOfBirth(LocalDate dateOfBirth) {
+	public void setDateOfBirth(Date dateOfBirth) {
 		
 		this.dateOfBirth = dateOfBirth;
 	}

@@ -1,9 +1,7 @@
 package com.chitra.kms.controller.rest;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -15,31 +13,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.chitra.kms.entity.Student;
 import com.chitra.kms.service.StudentService;
 import com.chitra.kms.service.UserService;
 import com.chitra.kms.utils.SSOIdUtil;
-
 @RestController
 @RequestMapping("/dashboard")
-public class StudentRestController {
-	
+public class StudentRestController {	
 	@Autowired
 	StudentService studentService;
 	@Autowired
-	UserService userService;
-	
-	
-	SSOIdUtil sSOIdUtil;
-	
-	
-	@RequestMapping(value="/student/add", method = RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE)
-	public Map<String, Object> addStudent(@RequestBody() Student student){
+	UserService userService;	
+	SSOIdUtil sSOIdUtil;	
+	@RequestMapping(value="/student/add", method = RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
+	public Map<String, Object> addStudent(@RequestBody() Student student){		
 		System.out.println(student.getFirstName());
-		System.out.println(student.getDateOfBirth());
-		
-		
+		System.out.println(student.getDateOfBirth());	
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		try{
@@ -49,8 +38,7 @@ public class StudentRestController {
 		}catch(Exception e){
 			map.put("SUCCESS", false);
 			map.put("ERROR", e.getStackTrace());
-		}
-		
+		}		
 		return map;
 	}
 	@RequestMapping(value = "/student", method = RequestMethod.GET ,  produces=MediaType.APPLICATION_JSON_VALUE)
@@ -60,8 +48,7 @@ public class StudentRestController {
 											@RequestParam("numberOfRecord") int numberOfRecord,
 											@RequestParam("pageCount") int pageCount){	          
 		
-		int offset = (pageCount-1)*numberOfRecord;
-		
+		int offset = (pageCount-1)*numberOfRecord;		
 		String firstName = "";
 		String lastName = "";
 		if(language.equalsIgnoreCase("km")){
@@ -70,36 +57,29 @@ public class StudentRestController {
 		}else{
 			firstName = "student.firstName";
 			lastName = "student.lastName";
-		}
-		
+		}		
 		sSOIdUtil = new SSOIdUtil();		
 		//User user = userService.findBySso(sSOIdUtil.getPrincipal());
-		Map<String, Object> map = new HashMap<String, Object>();
-		
+		Map<String, Object> map = new HashMap<String, Object>();		
 		List<Student> students =  studentService.findAll(
 				firstName, 
 				lastName, 
 				searchName, 
 				whereUserId,
 				numberOfRecord, 
-				offset);
-		
+				offset);		
 		long recordTotal = studentService.countRecordListl(
 				firstName, 
 				lastName, 
 				searchName,
-				whereUserId);
-		
+				whereUserId);		
 		if(students == null){
              map.put("List", null);     
 		}else{
 			map.put("RecordTotal", recordTotal);
-			map.put("List", students);
-			
-		}  
-      
-		return map;
-		
+			map.put("List", students);		
+		}        
+		return map;	
 		
 	}
 	/**
@@ -113,11 +93,9 @@ public class StudentRestController {
 	        Student student = studentService.findById(id);
 	        Map<String, Object> map = new HashMap<String, Object>();
 	        if (student == null) {
-	            map.put("List", "NOT FOUND");
-	            
+	            map.put("List", "NOT FOUND");	            
 	        }else{
-	        	map.put("List", student);
-	        	
+	        	map.put("List", student);	        	
 	        }
 	        return map;
 	    

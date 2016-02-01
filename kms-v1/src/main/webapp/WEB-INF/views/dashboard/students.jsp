@@ -3,9 +3,9 @@
 	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 	  <div class="modal-dialog modal-lg">
 	    <div class="modal-content">
-	      <form>
+	      <form id="student-form">
 	      	<fieldset>
-	      		<legend>ពត៌មានអំពីសិស្ស៖</legend>	      		
+	      		<legend>ព័ត៏មានអំពីសិស្ស៖</legend>	      		
 		      	<div class="col-sm-12 ">
 		      		<div class="col-sm-6 form-group">
 			      		<label for="kmLastName" class="col-sm-5 control-label">នាមត្រកូល៖</label>
@@ -16,7 +16,7 @@
 		      		<div class="col-sm-6 form-group">
 			      		<label for="lastName" class="col-sm-5 control-label">ជាភាសាអង់គ្លេស៖</label>
 			      		<div class="col-sm-7">
-			      			<input type="text" id="lastName" class="form-control" >
+			      			<input type="text" id="lastName" name="lastName" class="form-control" >
 			      		</div>	
 		      		</div>	      		
 		      	</div>      		
@@ -24,13 +24,13 @@
 		      		<div class="col-sm-6 form-group">
 			      		<label for="kmFirstName" class="col-sm-5 control-label">នាមខ្លួន៖</label>
 			      		<div class="col-sm-7">
-			      			<input id="kmFirstName" type="text" class="form-control" >
+			      			<input id="kmFirstName" type="text" name="kmFirstName" class="form-control" >
 			      		</div>	
 		      		</div>	
 		      		<div class="col-sm-6 form-group">
 			      		<label for="firstName" class="col-sm-5 control-label">ជាភាសាអង់គ្លេស៖</label>
 			      		<div class="col-sm-7">
-			      			<input id="firstName" type="text" class="form-control" >
+			      			<input id="firstName" type="text" name="firstName" class="form-control" >
 			      		</div>	
 		      		</div>	      		
 		      	</div> 
@@ -38,16 +38,16 @@
                 	<div class="col-sm-6 form-group">
                 		<label for="gender" class="col-sm-5 control-label">ភេទ៖</label>
                 		<div class="col-sm-7" id="selectionGender">
-                			<select id="gender" class="form-control">
+                			<select id="gender"  class="form-control">
                 				<option value="M">ប្រុស</option>							                				
                 				<option value="F">ស្រី</option>
                 			</select>						                			
                 		</div>
                 	</div> 
                 	<div class="col-sm-6 form-group">
-                		<label for="birthDate" class="col-sm-5 control-label">ថ្ងៃ ខែ ឆ្នាំ កំណើត៖</label>
+                		<label for="birthDate" class="col-sm-5 control-label">ថ្ងៃ ខែ ឆ្នាំ កំណើត(yyyy-mm-dd)៖</label>
                 		<div class="col-sm-7">                			
-                			<input type="text" id="dateOfBirth" class="form-control" >
+                			<input type="text"  id="dateOfBirth" class="form-control" >
                 		</div>
                 	</div>
 	      		</div>
@@ -66,7 +66,7 @@
 			      		</div>	
 		      		</div>	      		
 		      	</div> 
-		      	<legend>ពត៏មានអំពីគ្រួសារ</legend>
+		      	<legend>អាសយដ្ឋាន</legend>
 		      	<div class="col-sm-12">
 		      		<div class="col-sm-6 form-group">
 		      			<label for="city" class="col-sm-5 control-label">ក្រុង/រាជធានី</label>
@@ -98,15 +98,95 @@
 		      			</div>
 		      		</div>
 		      		<div class="col-sm-6 form-group">
-		      			<label for="city" class="col-sm-5 control-label">ខ័ណ្ឌ/ស្រុក</label>
+		      			<label for="city" class="col-sm-5 control-label">ភូមិ</label>
 		      			<div class="col-sm-7">
 		      				<select id="gender" class="form-control">
-	               				<option value="psc">ចោមចៅ</option>							                				
-	               				<option value="dgk">ភ្លើងឆេះរទេះ</option>
+	               				<option value="psc">ព្រៃកំបុត</option>							                				
+	               				<option value="dgk">ព្រៃកី(ក)</option>						                				
+	               				<option value="dgk">ព្រៃកី(ខ)</option>						                				
+	               				<option value="dgk">ព្រៃកី(គ)</option>						                				
+	               				<option value="dgk">ស្រែញរ</option>
 	               			</select>
 		      			</div>
 		      		</div>
-		      	</div>
+			      	<div class="col-sm-12">
+			      		<div class="col-sm-6 form-group">
+			      			<label for="city" class="col-sm-5 control-label">ផ្ទះលេខ</label>
+			      			<div class="col-sm-7">
+			      				<select id="gender" class="form-control">
+		               				<option value="pnp">ភ្នំពេញ</option>							                				
+		               				<option value="knd">កណ្តាល</option>
+		               			</select>
+			      			</div>
+			      		</div>
+			      		<div class="col-sm-6 form-group">
+			      			<label for="city" class="col-sm-5 control-label">ផ្លូវលេខ</label>
+			      			<div class="col-sm-7">
+			      				<select id="gender" class="form-control">
+		               				<option value="psc">ពោធិសែនជ័យ</option>							                				
+		               				<option value="dgk">ដង្កោ</option>
+		               			</select>
+			      			</div>
+			      		</div>
+			      	</div>
+			      	</div>
+			      	<legend>ទំនាក់ទំនង</legend>   		
+			      	<div class="col-sm-12 ">
+			      		<div class="col-sm-6 form-group">
+				      		<label for="kmLastName" class="col-sm-5 control-label">លេខទូរស័ព្ទ៖</label>
+				      		<div class="col-sm-7">
+				      			<input type="text" id="kmLastName" name="kmLastName" class="form-control" >
+				      		</div>	
+			      		</div>	
+			      		<div class="col-sm-6 form-group">
+				      		<label for="lastName" class="col-sm-5 control-label">សារអេឡិចត្រូនិច៖</label>
+				      		<div class="col-sm-7">
+				      			<input type="text" id="lastName" class="form-control" >
+				      		</div>	
+			      		</div>	      		
+			      	</div>
+			      	<legend>គ្រួសារ</legend>   		
+			      	<div class="col-sm-12 ">
+			      		<div class="col-sm-4 form-group">
+				      		<label for="kmLastName" class="col-sm-5 control-label">ឳពុកឈ្មោះ៖</label>
+				      		<div class="col-sm-7">
+				      			<input type="text" id="kmLastName" name="kmLastName" class="form-control" >
+				      		</div>	
+			      		</div>	
+			      		<div class="col-sm-4 form-group">
+				      		<label for="lastName" class="col-sm-5 control-label">មុខរបរ៖</label>
+				      		<div class="col-sm-7">
+				      			<input type="text" id="lastName" class="form-control" >
+				      		</div>	
+			      		</div>	
+			      		<div class="col-sm-4 form-group">
+				      		<label for="lastName" class="col-sm-5 control-label">លេខទូរស័ព្ទ៖</label>
+				      		<div class="col-sm-7">
+				      			<input type="text" id="lastName" class="form-control" >
+				      		</div>	
+			      		</div>		      		
+			      	</div>   		
+			      	<div class="col-sm-12 ">
+			      		<div class="col-sm-4 form-group">
+				      		<label for="kmLastName" class="col-sm-5 control-label">ម្តាយឈ្មោះ៖</label>
+				      		<div class="col-sm-7">
+				      			<input type="text" id="kmLastName" name="kmLastName" class="form-control" >
+				      		</div>	
+			      		</div>	
+			      		<div class="col-sm-4 form-group">
+				      		<label for="lastName" class="col-sm-5 control-label">មុខរបរ៖</label>
+				      		<div class="col-sm-7">
+				      			<input type="text" id="lastName" class="form-control" >
+				      		</div>	
+			      		</div>	
+			      		<div class="col-sm-4 form-group">
+				      		<label for="lastName" class="col-sm-5 control-label">លេខទូរស័ព្ទ៖</label>
+				      		<div class="col-sm-7">
+				      			<input type="text" id="lastName" class="form-control" >
+				      		</div>	
+			      		</div>		      		
+			      	</div>
+				      	
 		      	
 		      	<input type="button" class="btn btn-info" id="btnAdd" value="Add" >
 		      	

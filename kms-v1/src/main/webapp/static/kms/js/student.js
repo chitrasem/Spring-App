@@ -70,7 +70,7 @@ $(document).ready(function(){
 			//student_info['dateOfBirth'] = d;
 			student_info['dateOfBirth'] = $("#dateOfBirth").val();
 			
-			console.log(student_info);
+			//console.log(student_info);
 			student.add_student();
 			
 			
@@ -331,9 +331,7 @@ var createTable = {
 							"<td>"+
 								list[i].gender+"</td>" +
 							"<td>"+
-								list[i].dateOfBirth['values']['2']+" /" +
-								list[i].dateOfBirth['values']['1'] + " /" +
-								list[i].dateOfBirth['values']['0'] +
+								list[i].dateOfBirth+
 							"</td>" +
 							"<td>"+
 								list[i].phoneNumber+"</td>" +

@@ -57,6 +57,7 @@
 
         <script src="<c:url value="/static/js/modernizr.min.js" />"></script>
         <script src="<c:url value="/static/js/jquery.min.js" />"></script>
+        <script src="<c:url value="/static/js/jquery.serialize-object.js" />"></script>
         <jsp:invoke fragment="headContent" />
     </head>
     <body class="fixed-left">
