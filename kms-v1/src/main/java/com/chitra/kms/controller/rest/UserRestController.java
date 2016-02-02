@@ -66,6 +66,7 @@ public class UserRestController {
 			map.put("Message", "User "+user.getSsoId()+ " added successfully!");
 		}catch(Exception e){
 			map.put("Message", e.getMessage());
+			e.printStackTrace();
 		}	
 		
 		return map;
