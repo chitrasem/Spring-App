@@ -24,6 +24,8 @@ public class StudentDaoImpl extends AbstractDao<Integer, Student> implements Stu
 			int whereUserId,
 			int maxResults, 
 			int firstResult) {
+		String status = "Inactive";
+		
 		Criteria crit = getSession().
 				createCriteria(Student.class, "student");				
 				crit.setProjection(Projections.projectionList().
@@ -37,10 +39,19 @@ public class StudentDaoImpl extends AbstractDao<Integer, Student> implements Stu
 		Criterion cLastName = Restrictions.like(lastName, searchName);
 		LogicalExpression orExp = Restrictions.or(cFirstName, cLastName);
 				crit.add(orExp);
-				if(whereUserId > 0){
-					crit.add(Restrictions.eq("student.user.id", whereUserId));						
+				if(status=="Inactive"){
+					crit.add(Restrictions.eq("student.status", status));
+					crit.addOrder(Order.desc("student.id"));
+					
+				}else if(status=="Active"){
+					if(whereUserId > 0){
+						crit.add(Restrictions.eq("student.user.id", whereUserId));
+					}
+					crit.addOrder(Order.asc(lastName));
+					
 				}
-				crit.addOrder(Order.asc(lastName));
+				
+				
 				crit.setMaxResults(maxResults);
 				crit.setFirstResult(firstResult);				
 				//Convert to Student list

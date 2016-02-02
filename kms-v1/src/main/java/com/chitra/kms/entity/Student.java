@@ -65,6 +65,9 @@ public class Student {
     @JoinColumn(name="P_ID")
     private Parents parents;
     
+    @Column(name="STATUS")
+    private String state=State.INACTIVE.getState();
+    
    
 	public Parents getParents() {
 		return parents;
