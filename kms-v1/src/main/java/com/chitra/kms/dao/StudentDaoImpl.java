@@ -25,7 +25,7 @@ public class StudentDaoImpl extends AbstractDao<Integer, Student> implements Stu
 			int whereUserId,
 			int maxResults, 
 			int firstResult) {
-		String status = State.ACTIVE.getState();
+		String status = "Inactive";
 		
 		Criteria crit = getSession().
 				createCriteria(Student.class, "student");				
@@ -47,6 +47,7 @@ public class StudentDaoImpl extends AbstractDao<Integer, Student> implements Stu
 				}else if(status==State.ACTIVE.getState()){ 
 					if(whereUserId > 0){
 						crit.add(Restrictions.eq("student.user.id", whereUserId));
+						crit.add(Restrictions.eq("student.state",State.ACTIVE.getState()));
 					}
 					crit.addOrder(Order.asc(lastName));
 					
