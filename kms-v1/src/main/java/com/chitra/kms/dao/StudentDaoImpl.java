@@ -11,6 +11,7 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.transform.AliasToBeanResultTransformer;
 import org.springframework.stereotype.Repository;
 
+import com.chitra.kms.entity.State;
 import com.chitra.kms.entity.Student;
 
 @Repository("studentDao")
@@ -24,7 +25,7 @@ public class StudentDaoImpl extends AbstractDao<Integer, Student> implements Stu
 			int whereUserId,
 			int maxResults, 
 			int firstResult) {
-		String status = "Inactive";
+		String status = State.ACTIVE.getState();
 		
 		Criteria crit = getSession().
 				createCriteria(Student.class, "student");				
@@ -39,11 +40,11 @@ public class StudentDaoImpl extends AbstractDao<Integer, Student> implements Stu
 		Criterion cLastName = Restrictions.like(lastName, searchName);
 		LogicalExpression orExp = Restrictions.or(cFirstName, cLastName);
 				crit.add(orExp);
-				if(status=="Inactive"){
-					crit.add(Restrictions.eq("student.status", status));
+				if(status == State.INACTIVE.getState()){
+					crit.add(Restrictions.eq("student.state", State.INACTIVE.getState()));
 					crit.addOrder(Order.desc("student.id"));
 					
-				}else if(status=="Active"){
+				}else if(status==State.ACTIVE.getState()){ 
 					if(whereUserId > 0){
 						crit.add(Restrictions.eq("student.user.id", whereUserId));
 					}

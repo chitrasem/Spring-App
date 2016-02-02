@@ -72,6 +72,12 @@ public class Student {
 	public Parents getParents() {
 		return parents;
 	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
 	public void setParents(Parents parents) {
 		this.parents = parents;
 	}
