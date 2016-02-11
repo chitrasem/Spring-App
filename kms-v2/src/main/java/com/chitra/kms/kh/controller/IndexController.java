@@ -11,5 +11,13 @@ public class IndexController {
 	public ModelAndView indexController(){		
 		return new ModelAndView("redirect:home");
 	}
+	@RequestMapping(value="/home")
+	public ModelAndView homePage(){
+		return new ModelAndView("/pages/welcome");
+	}
+	@RequestMapping(value="/login")
+	public String login(){
+		return "login";
+	}
 
 }

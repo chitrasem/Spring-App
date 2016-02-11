@@ -16,7 +16,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.chitra.kms")
+@ComponentScan(basePackages = "com.chitra.kms.kh")
 public class MainConfig extends WebMvcConfigurerAdapter{
 	
 	@Autowired

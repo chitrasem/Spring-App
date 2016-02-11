@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({ "com.chitra.kms.configuration" })
+@ComponentScan({ "com.chitra.kms.kh.configuration" })
 @PropertySource(value = { "classpath:application.properties" })
 public class HibernateConfiguration {
  
@@ -29,7 +29,7 @@ public class HibernateConfiguration {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.chitra.kms.entity" });
+        sessionFactory.setPackagesToScan(new String[] { "com.chitra.kms.kh.entity" });
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
      }
