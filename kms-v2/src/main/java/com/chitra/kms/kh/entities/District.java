@@ -1,7 +1,10 @@
 package com.chitra.kms.kh.entities;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 
 public class District {
 	
@@ -13,7 +16,9 @@ public class District {
 	private String note;
 	private String issueDate;
 	private Province province;
-	private Set<Commune> communes = new HashSet<Commune>();
+
+	@OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Commune> communes;
 	
 	
 	
@@ -65,10 +70,10 @@ public class District {
 	public void setProvince(Province province) {
 		this.province = province;
 	}
-	public Set<Commune> getCommunes() {
+	public List<Commune> getCommunes() {
 		return communes;
 	}
-	public void setCommunes(Set<Commune> communes) {
+	public void setCommunes(List<Commune> communes) {
 		this.communes = communes;
 	}
 	
