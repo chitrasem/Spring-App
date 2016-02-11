@@ -3,6 +3,11 @@ package com.chitra.kms.kh.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="kms_commune")
 public class Commune {
 	
 	private long id;

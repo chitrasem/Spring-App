@@ -1,15 +1,46 @@
 package com.chitra.kms.kh.entities;
 
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name="kms_village")
 public class Village {
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(nullable=false, unique=false)
 	private long id;
+	
 	private String code;
+	
+	@Column(name="k_name")
 	private String kName;
+	
+	@Column(name="e_name")
 	private String eName;
+	
+	
 	private String reference;
 	private String note;
-	private String issueDate;
-	private Commune commune;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="date_issue")
+	private Date issueDate;
+	
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	private List<Commune> commune;
 	
 	public long getId() {
 		return id;
@@ -47,16 +78,16 @@ public class Village {
 	public void setNote(String note) {
 		this.note = note;
 	}
-	public String getIssueDate() {
+	public Date getIssueDate() {
 		return issueDate;
 	}
-	public void setIssueDate(String issueDate) {
+	public void setIssueDate(Date issueDate) {
 		this.issueDate = issueDate;
 	}
-	public Commune getCommune() {
+	public List<Commune> getCommune() {
 		return commune;
 	}
-	public void setCommune(Commune commune) {
+	public void setCommune(List<Commune> commune) {
 		this.commune = commune;
 	}
 	
