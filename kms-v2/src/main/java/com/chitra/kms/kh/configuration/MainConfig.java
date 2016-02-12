@@ -52,8 +52,8 @@ public class MainConfig extends WebMvcConfigurerAdapter{
     * In our example, we need a converter to convert string values[Roles] to UserProfiles in newUser.jsp
     */
    
-   /*@Override
+   @Override
 	public void addFormatters(FormatterRegistry registry) {
 		registry.addConverter(roleToUserProfileConverter);
-	}*/
+	}
 }

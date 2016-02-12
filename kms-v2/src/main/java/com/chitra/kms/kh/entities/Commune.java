@@ -1,29 +1,55 @@
 package com.chitra.kms.kh.entities;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Date;
+import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="kms_commune")
 public class Commune {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
-	private String code;
-	private String kName;
-	private String eName;
-	private String reference;
-	private String note;
-	private String issueDate;
-	private District district;
-	private Set<Village> privinces = new HashSet<Village>();
 	
-	public Set<Village> getPrivinces() {
+	private String code;
+	
+	@Column(name="k_name")
+	private String kName;
+	
+	@Column(name="e_name")
+	private String eName;
+	
+	private String reference;
+	
+	private String note;
+	
+	@Column(name="date_issue")
+	@Temporal(TemporalType.DATE)
+	private Date issueDate;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	private District district;
+	
+	@OneToMany(fetch=FetchType.LAZY)
+	private List<Province> privinces;
+	
+	public List<Province> getPrivinces() {
 		return privinces;
 	}
-	public void setPrivinces(Set<Village> privinces) {
+	
+	public void setPrivinces(List<Province> privinces) {
 		this.privinces = privinces;
 	}
 	public long getId() {
@@ -62,10 +88,10 @@ public class Commune {
 	public void setNote(String note) {
 		this.note = note;
 	}
-	public String getIssueDate() {
+	public Date getIssueDate() {
 		return issueDate;
 	}
-	public void setIssueDate(String issueDate) {
+	public void setIssueDate(Date issueDate) {
 		this.issueDate = issueDate;
 	}
 	public District getDistrict() {

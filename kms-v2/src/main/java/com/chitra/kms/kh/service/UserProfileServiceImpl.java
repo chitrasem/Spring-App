@@ -24,7 +24,6 @@ public class UserProfileServiceImpl implements UserProfileService{
 	}
 
 	public UserProfile findByid(int id) {
-		// TODO Auto-generated method stub
 		return dao.findById(id);
 	}
 

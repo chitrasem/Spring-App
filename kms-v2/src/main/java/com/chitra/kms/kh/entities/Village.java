@@ -40,7 +40,7 @@ public class Village {
 	private Date issueDate;
 	
 	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private List<Commune> commune;
+	private Commune commune;
 	
 	public long getId() {
 		return id;
@@ -84,10 +84,10 @@ public class Village {
 	public void setIssueDate(Date issueDate) {
 		this.issueDate = issueDate;
 	}
-	public List<Commune> getCommune() {
+	public Commune getCommune() {
 		return commune;
 	}
-	public void setCommune(List<Commune> commune) {
+	public void setCommune(Commune commune) {
 		this.commune = commune;
 	}
 	

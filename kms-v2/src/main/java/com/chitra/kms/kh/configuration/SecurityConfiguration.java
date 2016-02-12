@@ -68,7 +68,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .antMatchers("/dashboard/account/**").access("hasRole('ACCOUNTANT') or hasRole('DIRECTOR')")
         .antMatchers("/dashboard","/dashboard/**").access("hasRole('TEACHER') or hasRole('DIRECTOR') or hasRole('ACCOUNTANT') ")
         .and().formLogin().loginPage("/login").successHandler(customSuccessHandler)
-        .usernameParameter("ssoId").passwordParameter("password")
+        .usernameParameter("username").passwordParameter("password")
         .and().exceptionHandling().accessDeniedPage("/Access_Denied")
         .and().rememberMe().rememberMeParameter("remember-me").tokenRepository(persistentTokenRepository())
         .and().csrf().disable();            		

@@ -29,7 +29,7 @@ public class HibernateConfiguration {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.chitra.kms.kh.entity" });
+        sessionFactory.setPackagesToScan(new String[] { "com.chitra.kms.kh.entities" });
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
      }
