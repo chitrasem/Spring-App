@@ -37,8 +37,8 @@ public class District {
 	@Temporal(TemporalType.DATE)
 	private Date issueDate;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-	private Province province;
+	/*@ManyToOne(fetch=FetchType.LAZY)
+	private Province province;*/
 
 	@OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Commune> communes;
@@ -86,12 +86,6 @@ public class District {
 	}
 	public void setIssueDate(Date issueDate) {
 		this.issueDate = issueDate;
-	}
-	public Province getProvince() {
-		return province;
-	}
-	public void setProvince(Province province) {
-		this.province = province;
 	}
 	public List<Commune> getCommunes() {
 		return communes;

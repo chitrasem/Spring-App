@@ -2,13 +2,12 @@ package com.chitra.kms.kh.entities;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -22,21 +21,25 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
+	@Column(nullable=false, unique=true)
 	private String username;
 	
+	@Column(nullable=false)
 	private String email;
-	
+	@Column(nullable=false)
 	private String password;
 	
 	private String state = State.INACTIVE.getState();
 	
-	@ManyToOne(fetch=FetchType.LAZY,cascade = CascadeType.ALL)
+
+	@ManyToOne(optional = false)
+    @JoinColumn(name="profile_id")
 	private UserProfile userProfile;
 	
-	@Column(name="first_name")
+	@Column(name="first_name", nullable=false)
 	private String firstName;
 	
-	@Column(name="last_name")
+	@Column(name="last_name", nullable=false)
 	private String lastName;
 	
 	private String gender = Gender.NOT.getGender();
@@ -48,11 +51,21 @@ public class User {
 	@Column(name="phone_number")
 	private String phoneNumber;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(optional = false)
+    @JoinColumn(name="address_id")
 	private Address address;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(optional = false)
+    @JoinColumn(name="parent_id")
 	private Parent parent;
+	
+	@ManyToOne(optional =false)
+	@JoinColumn(name="classroom_id")
+	private Classroom classroom;
+	
+	@ManyToOne(optional =false)
+	@JoinColumn(name="level_id")
+	private Level level;
 
 	public long getId() {
 		return id;
@@ -157,6 +170,27 @@ public class User {
 	public void setParent(Parent parent) {
 		this.parent = parent;
 	}
+
+	public Classroom getClassroom() {
+		return classroom;
+	}
+
+	public void setClassroom(Classroom classroom) {
+		this.classroom = classroom;
+	}
+
+	public Level getLevel() {
+		return level;
+	}
+
+	public void setLevel(Level level) {
+		this.level = level;
+	}
+	
+	
+	
+	
+
 	
 	
 	

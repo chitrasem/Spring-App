@@ -3,6 +3,7 @@ package com.chitra.kms.kh.entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -39,18 +40,20 @@ public class Commune {
 	@Temporal(TemporalType.DATE)
 	private Date issueDate;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-	private District district;
+	@ManyToOne(optional = false)
 	
-	@OneToMany(fetch=FetchType.LAZY)
-	private List<Province> privinces;
+ /*   @JoinColumn(name="district_id")
+	private District district;*/
 	
-	public List<Province> getPrivinces() {
-		return privinces;
+	@OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Village> villages;
+	
+	public List<Village> getVillages() {
+		return villages;
 	}
 	
-	public void setPrivinces(List<Province> privinces) {
-		this.privinces = privinces;
+	public void setVillages(List<Village> villages) {
+		this.villages = villages;
 	}
 	public long getId() {
 		return id;
@@ -93,12 +96,6 @@ public class Commune {
 	}
 	public void setIssueDate(Date issueDate) {
 		this.issueDate = issueDate;
-	}
-	public District getDistrict() {
-		return district;
-	}
-	public void setDistrict(District district) {
-		this.district = district;
 	}
 	
 	

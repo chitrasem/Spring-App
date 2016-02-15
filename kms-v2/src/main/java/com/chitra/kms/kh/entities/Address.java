@@ -30,8 +30,7 @@ public class Address {
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Village village;
 	
-	@Column(name="house_number")
-	private String houseNumber;
+	
 
 	public long getId() {
 		return id;
@@ -71,14 +70,6 @@ public class Address {
 
 	public void setVillage(Village village) {
 		this.village = village;
-	}
-
-	public String getHouseNumber() {
-		return houseNumber;
-	}
-
-	public void setHouseNumber(String houseNumber) {
-		this.houseNumber = houseNumber;
 	}
 	
 	

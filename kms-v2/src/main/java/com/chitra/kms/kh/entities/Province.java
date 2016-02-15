@@ -1,7 +1,6 @@
 package com.chitra.kms.kh.entities;
 
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,14 +19,17 @@ public class Province {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
+	
 	@Column(nullable=false)
 	private String code;
-	@Column(nullable=false)
+	
+	@Column(nullable=false, name="k_name")
 	private String kName;
-	@Column(nullable=false)
+	@Column(nullable=false, name="e_name")
 	private String eName;
 	private String reference;
 	private String note;
+	@Column(name="date_issue")
 	private String issueDate;
 	@OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<District> districts;

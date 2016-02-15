@@ -1,16 +1,12 @@
 package com.chitra.kms.kh.entities;
 
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -39,8 +35,9 @@ public class Village {
 	@Column(name="date_issue")
 	private Date issueDate;
 	
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private Commune commune;
+/*	@ManyToOne(optional = false)
+    @JoinColumn(name="c_id")
+	private Commune commune;*/
 	
 	public long getId() {
 		return id;
@@ -83,12 +80,6 @@ public class Village {
 	}
 	public void setIssueDate(Date issueDate) {
 		this.issueDate = issueDate;
-	}
-	public Commune getCommune() {
-		return commune;
-	}
-	public void setCommune(Commune commune) {
-		this.commune = commune;
 	}
 	
 	

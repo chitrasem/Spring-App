@@ -48,10 +48,10 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
             roles.add(a.getAuthority());
         }
  
-        if (isDba(roles)) {
-            url = "/dashboard";
-        } else if (isAdmin(roles)) {
-            url = "/dashboard";
+        if (isDirector(roles)) {
+            url = "/admin/dashboard";
+        } else if (isTeacher(roles)) {
+            url = "admin/dashboard";
         } else if (isUser(roles)) {
             url = "/home";
         } else {
@@ -68,14 +68,14 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
         return false;
     }
  
-    private boolean isAdmin(List<String> roles) {
+    private boolean isTeacher(List<String> roles) {
         if (roles.contains("ROLE_TEACHER")) {
             return true;
         }
         return false;
     }
  
-    private boolean isDba(List<String> roles) {
+    private boolean isDirector(List<String> roles) {
         if (roles.contains("ROLE_DIRECTOR")) {
             return true;
         }
