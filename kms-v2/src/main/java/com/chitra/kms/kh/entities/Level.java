@@ -28,6 +28,32 @@ public class Level {
 	@JoinTable(name = "kms_level_classroom", joinColumns = { @JoinColumn(name = "level_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "classroom_id") })
 	private Set<Classroom> classrooms = new HashSet<Classroom>();
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getLevel() {
+		return level;
+	}
+
+	public void setLevel(String level) {
+		this.level = level;
+	}
+
+	public Set<Classroom> getClassrooms() {
+		return classrooms;
+	}
+
+	public void setClassrooms(Set<Classroom> classrooms) {
+		this.classrooms = classrooms;
+	}
+	
+	
 	
 	
 }

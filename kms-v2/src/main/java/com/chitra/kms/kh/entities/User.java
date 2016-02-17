@@ -41,7 +41,7 @@ public class User {
 	
 	@Column(name="last_name", nullable=false)
 	private String lastName;
-	
+	@Column(length=1)
 	private String gender = Gender.NOT.getGender();
 	
 	@Temporal(TemporalType.DATE)
