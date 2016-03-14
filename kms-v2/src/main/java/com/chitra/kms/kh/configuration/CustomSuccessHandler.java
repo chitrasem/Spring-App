@@ -51,7 +51,7 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
         if (isDirector(roles)) {
             url = "/admin/dashboard";
         } else if (isTeacher(roles)) {
-            url = "admin/dashboard";
+            url = "/admin/dashboard";
         } else if (isUser(roles)) {
             url = "/home";
         } else {
