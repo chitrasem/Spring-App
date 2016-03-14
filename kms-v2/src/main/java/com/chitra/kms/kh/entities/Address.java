@@ -18,19 +18,26 @@ public class Address {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-	private Province province;
-	
-	@ManyToOne(fetch=FetchType.LAZY)	
-	private District district;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	private Commune commune;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	private Village village;
+	private String shortDescription;
+	private String longDescription;
 	
 	
+
+	public String getShortDescription() {
+		return shortDescription;
+	}
+
+	public void setShortDescription(String shortDescription) {
+		this.shortDescription = shortDescription;
+	}
+
+	public String getLongDescription() {
+		return longDescription;
+	}
+
+	public void setLongDescription(String longDescription) {
+		this.longDescription = longDescription;
+	}
 
 	public long getId() {
 		return id;
@@ -40,37 +47,6 @@ public class Address {
 		this.id = id;
 	}
 
-	public Province getProvince() {
-		return province;
-	}
-
-	public void setProvince(Province province) {
-		this.province = province;
-	}
-
-	public District getDistrict() {
-		return district;
-	}
-
-	public void setDistrict(District district) {
-		this.district = district;
-	}
-
-	public Commune getCommune() {
-		return commune;
-	}
-
-	public void setCommune(Commune commune) {
-		this.commune = commune;
-	}
-
-	public Village getVillage() {
-		return village;
-	}
-
-	public void setVillage(Village village) {
-		this.village = village;
-	}
 	
 	
 
