@@ -10,7 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -36,9 +35,6 @@ public class District {
 	@Column(name="date_issue")
 	@Temporal(TemporalType.DATE)
 	private Date issueDate;
-	
-	/*@ManyToOne(fetch=FetchType.LAZY)
-	private Province province;*/
 
 	@OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Commune> communes;
@@ -93,8 +89,5 @@ public class District {
 	public void setCommunes(List<Commune> communes) {
 		this.communes = communes;
 	}
-	
-	
-	
 
 }

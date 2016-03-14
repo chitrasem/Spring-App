@@ -51,19 +51,19 @@ public class User {
 	@Column(name="phone_number")
 	private String phoneNumber;
 	
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
     @JoinColumn(name="address_id")
 	private Address address;
 	
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
     @JoinColumn(name="parent_id")
 	private Parent parent;
 	
-	@ManyToOne(optional =false)
+	@ManyToOne(optional =true)
 	@JoinColumn(name="classroom_id")
 	private Classroom classroom;
 	
-	@ManyToOne(optional =false)
+	@ManyToOne(optional =true)
 	@JoinColumn(name="level_id")
 	private Level level;
 

@@ -35,10 +35,6 @@ public class Village {
 	@Column(name="date_issue")
 	private Date issueDate;
 	
-/*	@ManyToOne(optional = false)
-    @JoinColumn(name="c_id")
-	private Commune commune;*/
-	
 	public long getId() {
 		return id;
 	}
